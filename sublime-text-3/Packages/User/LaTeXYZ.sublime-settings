@@ -1,0 +1,6 @@
+{
+    "auto_set_preview_math_template_preamble": true,
+    "auto_create_fields": true,
+    "space_arrow_complete": true,
+    "backslash_complete": true
+}

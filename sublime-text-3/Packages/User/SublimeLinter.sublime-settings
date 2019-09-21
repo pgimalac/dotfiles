@@ -1,0 +1,13 @@
+// SublimeLinter Settings - User
+{
+   "delay": 0.5,
+    "linters":
+    {
+        "clang": {
+            "args": "-fvery-important"
+        },
+        "clang++": {
+            "args": "-falso-important"
+        }
+    }
+}

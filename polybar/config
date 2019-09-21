@@ -1,0 +1,426 @@
+;====My Polybar Settings===================================
+
+
+
+;====General Settings======================================
+[colors]
+adapta-cyan = #00BCD4
+adapta-red = #FF5252
+;adapta-yellow = #FFB224
+adapta-yellow = #C9BC0E
+adapta-lightgreen = #4DB6AC
+adapta-green = #009688
+adapta-grey = #475359
+bg = #222D32
+fg = #CFD8DC
+main-color = ${colors.adapta-cyan}
+
+[margin]
+for-modules = 1
+
+[bar/top]
+monitor = DP-0
+width = 100%
+height = 30
+fixed-center = true
+tray-position = right
+tray-detached = false
+line-size = 2
+background = ${colors.bg}
+foreground = ${colors.fg}
+font-0 = "Fantasque Sans Mono:pixelsize=14;3"
+font-1 = "Iosevka Nerd Font:pixelsize=14;3"
+font-2 = "Iosevka Nerd Font:pixelsize=14;3"
+font-3 = MaterialIcons:size=14;0
+;font-4 = NotoSans:size=14;0
+;font-5 = MiscTermsyn:size=14:antialias=false;0
+;font-6 = MiscTermsynu:size=14:antialias=false;0
+;font-7 = Wuncon\ Siji:size=14;0
+;font-8 = unifont:size=14;0
+;font-9 = hack:size=14;0
+;font-10 = PowerlineSymbols:size=14;0
+;font-11 = xos4\ Terminus:size=14;0
+;font-12 = "FuraMono Nerd Font Mono:style=regular:size=14;0"
+
+cursor-click = pointer
+;==========================================================
+
+
+
+;====Module settings+======================================
+modules-left = explorer workspaces google github reddit facebook youtube
+modules-center = date
+modules-right = pkg xbacklight volume battery powermenu
+;==========================================================
+
+[bar/bot]
+monitor = DP-0
+bottom = true
+width = 100%
+height = 30
+fixed-center = true
+line-size = 2
+background = ${colors.bg}
+foreground = ${colors.fg}
+font-0 = "Fantasque Sans Mono:pixelsize=14;3"
+font-1 = "Iosevka Nerd Font:pixelsize=14;3"
+font-2 = "Iosevka Nerd Font:pixelsize=14;3"
+font-3 = MaterialIcons:size=14;0
+
+
+modules-left = i3
+modules-center = wireless-network
+modules-right = cpu-graph memory
+
+
+;====Left modules==========================================
+
+[module/workspaces]
+type = internal/xworkspaces
+pin-workspaces = false
+enable-click = true
+enable-scroll = false
+format-padding = 3
+;icon-0 = 1;❶
+;icon-1 = 2;❷
+;icon-2 = 3;❸
+;icon-3 = 4;❹
+;icon-4 = 5;❺
+;icon-5 = 6;❻
+;icon-6 = 7;❼
+;icon-7 = 8;❽
+;icon-8 = 9;❾
+;icon-9 = 10;❿
+icon-default = 
+format = <label-state>
+format-background = ${colors.bg}
+label-active = 
+label-occupied = 
+label-urgent = 
+label-empty = 
+label-empty-padding = 1
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+label-empty-foreground = ${colors.fg}
+label-active-foreground = ${colors.fg}
+label-urgent-foreground = ${colors.fg}
+label-occupied-foreground = ${colors.fg}
+
+[module/explorer]
+type = custom/text
+content = 
+;content = 
+content-padding = 1
+content-foreground = ${colors.fg}
+click-left = thunar
+
+[module/google]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${colors.fg}
+click-left = xdg-open https://www.google.com/
+
+[module/github]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${colors.fg}
+click-left = xdg-open https://www.github.com/
+
+[module/reddit]
+type = custom/text
+content = 
+;content = 
+content-padding = 1
+content-foreground = ${colors.fg}
+click-left = xdg-open https://www.reddit.com/
+
+[module/facebook]
+type = custom/text
+content = 
+content-padding = 1
+content-foreground = ${colors.fg}
+click-left = xdg-open https://www.facebook.com/
+
+[module/youtube]
+type = custom/text
+content = 
+;content = 
+content-padding = 1
+content-foreground = ${colors.fg}
+click-left = xdg-open https://www.youtube.com/
+;==========================================================
+
+
+
+;====Center modules========================================
+[module/date]
+type = internal/date
+interval = 1
+label-padding = 1
+label-underline = ${colors.main-color}
+date =   %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M:%S%%{F-}
+date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+;==========================================================
+
+
+
+;====Right modules=========================================
+;[module/mpd]
+;type = internal/mpd
+;format-online = <toggle> <label-song>
+;format-online =  <label-song>
+;alt icons =   
+;format-online-foreground = ${colors.ashade9}
+;format-online-background = ${colors.shade1}
+;format-online-padding = 1
+;icon-play = 喇
+;icon-pause = 
+;label-song-maxlen = 25
+;label-song-ellipsis = true
+;format-online-margin = ${margin.for-modules}
+
+[module/pkg]
+type = custom/script
+exec = bash ~/.config/polybar/checkupdates.sh
+;format-background = ${colors.shade2}
+format-underline = ${colors.main-color}
+format-padding = 1
+tail = true
+format-margin = ${margin.for-modules}
+click-left = termite -e "trizen -Sryu" &
+click-right = termite -e "trizen -Sayu" &
+
+[module/xbacklight]
+type = internal/xbacklight
+format = <label> <bar>
+format-underline = ${colors.main-color}
+format-padding = 1
+label =  %percentage%%
+bar-width = 8
+bar-indicator = 
+bar-indicator-foreground = ${colors.adapta-lightgreen}
+bar-indicator-font = 2
+bar-fill = ─
+bar-fill-font = 2
+bar-fill-foreground = ${colors.adapta-lightgreen}
+bar-empty = ─
+bar-empty-font = 2
+bar-empty-foreground = ${colors.adapta-grey}
+;format-margin = ${margin.for-modules}
+
+[module/volume]
+type = internal/alsa
+format-volume = <label-volume> <bar-volume>
+format-volume-underline = ${colors.main-color}
+format-volume-padding = 1
+label-volume = 墳 %percentage%%
+label-muted = 婢
+label-muted-underline = ${colors.main-color}
+label-muted-padding = 1
+bar-volume-width = 8
+bar-volume-foreground-0 = ${colors.adapta-lightgreen}
+bar-volume-foreground-1 = ${colors.adapta-lightgreen}
+bar-volume-foreground-2 = ${colors.adapta-lightgreen}
+bar-volume-foreground-3 = ${colors.adapta-lightgreen}
+bar-volume-foreground-4 = ${colors.adapta-lightgreen}
+bar-volume-foreground-5 = ${colors.adapta-yellow}
+bar-volume-foreground-6 = ${colors.adapta-yellow}
+bar-volume-foreground-7 = ${colors.adapta-red}
+bar-volume-gradient = false
+bar-volume-indicator = 
+bar-volume-indicator-foreground = ${colors.adapta-lightgreen}
+bar-volume-indicator-font = 2
+bar-volume-fill = ─
+bar-volume-fill-font = 2
+bar-volume-empty = ─
+bar-volume-empty-font = 2
+bar-volume-empty-foreground = ${colors.adapta-grey}
+format-muted-margin = ${margin.for-modules}
+format-volume-margin = ${margin.for-modules}
+
+
+
+[module/wired-network]
+type = internal/network
+interface = enp4s0
+format-overline = ${colors.main-color}
+
+[module/wireless-network]
+type = internal/network
+interface = wlp3s0
+interval = 1.0
+ping-interval = 10
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-overline = ${colors.main-color}
+label-connected = %essid%  %local_ip%    %downspeed%    %upspeed%
+label-disconnected =   not connected
+label-disconnected-foreground = #66
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+animation-packetloss-0 = 
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 
+animation-packetloss-1-foreground = ${bar/top.foreground}
+animation-packetloss-framerate = 500
+
+[module/cpu-graph]
+type = internal/cpu
+interval = 0.1
+format = " <ramp-coreload>"
+format-overline = ${colors.main-color}
+format-margin = ${margin.for-modules}
+format-padding = 1
+ramp-coreload-0 = ▁
+ramp-coreload-0-foreground = ${colors.main-color}
+ramp-coreload-1 = ▂
+ramp-coreload-1-foreground = ${colors.adapta-green}
+ramp-coreload-2 = ▃
+ramp-coreload-2-foreground = ${colors.adapta-lightgreen}
+ramp-coreload-3 = ▄
+ramp-coreload-3-foreground = ${colors.adapta-lightgreen}
+ramp-coreload-4 = ▅
+ramp-coreload-4-foreground = ${colors.adapta-yellow}
+ramp-coreload-5 = ▆
+ramp-coreload-5-foreground = ${colors.adapta-yellow}
+ramp-coreload-6 = ▇
+ramp-coreload-6-foreground = ${colors.adapta-red}
+ramp-coreload-7 = █
+ramp-coreload-7-foreground = ${colors.adapta-red}
+ramp-coreload-font = 3
+
+[module/memory]
+type = internal/memory
+interval = 0.1
+format-prefix = " "
+format-overline = ${colors.main-color}
+format-padding = 1
+
+format = <label> <bar-used>
+label = %percentage_used:2%%
+
+bar-used-width = 30
+bar-used-foreground-0 = ${colors.main-color}
+bar-used-foreground-1 = #7eba90
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = |
+bar-used-indicator-font = 6
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 6
+bar-used-empty = ─
+bar-used-empty-font = 6
+bar-used-empty-foreground = #444444
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = ADP1
+format-charging = <animation-charging> <label-charging>
+;format-charging-background = ${colors.shade2}
+format-charging-underline = ${colors.main-color}
+format-charging-padding = 1
+label-charging = %percentage%%
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.main-color}
+format-discharging-padding = 1
+label-discharging = %percentage:2%%
+format-full = <label-full>
+format-full-underline = ${colors.main-color}
+format-full-padding = 1
+format-charging-margin = ${margin.for-modules}
+format-discharging-margin = ${margin.for-modules}
+format-full-margin = ${margin.for-modules}
+format-full-prefix = " "
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-5 = 
+ramp-capacity-6 = 
+ramp-capacity-7 = 
+ramp-capacity-8 = 
+ramp-capacity-9 = 
+ramp-capacity-0-foreground = ${colors.adapta-red}
+ramp-capacity-1-foreground = ${colors.adapta-red}
+ramp-capacity-2-foreground = ${colors.adapta-red}
+ramp-capacity-3-foreground = ${colors.adapta-red}
+ramp-capacity-4-foreground = ${colors.adapta-yellow}
+ramp-capacity-5-foreground = ${colors.adapta-yellow}
+ramp-capacity-foreground   = ${colors.fg}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-5 = 
+animation-charging-6 = 
+animation-charging-foreground = ${colors.fg}
+animation-charging-framerate = 750
+
+[module/powermenu]
+type = custom/menu
+
+format-padding = 1
+format-underline = ${colors.main-color}
+
+label-open = 襤
+label-close = 襤
+label-separator = " | "
+
+menu-0-0 = Reboot
+menu-0-0-foreground = ${colors.fg}
+menu-0-0-exec = reboot
+menu-0-1 = Power off
+menu-0-1-foreground = ${colors.fg}
+menu-0-1-exec = poweroff
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+index-sort = true
+
+fuzzy-match = false
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+label-focused =  %index%
+label-focused-foreground = ${colors.bg}
+label-focused-background = ${colors.fg}
+label-focused-underline = ${colors.main-color}
+label-focused-overline = ${colors.main-color}
+label-focused-padding = 4
+
+label-unfocused = %index%
+label-unfocused-padding = 4
+
+label-visible = %index%
+label-visible-underline = ${colors.main-color}
+label-visible-padding = 4
+
+label-urgent = %index%
+label-urgent-foreground = ${colors.fg}
+label-urgent-background = ${colors.bg}
+label-urgent-padding = 4
+
+label-separator = |
+label-separator-padding = 0
+label-separator-foreground = ${colors.main-color}
+
+;==========================================================

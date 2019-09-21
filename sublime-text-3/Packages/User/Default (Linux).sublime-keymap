@@ -1,0 +1,52 @@
+[
+    { "keys": ["ctrl+up"], "command": "swap_line_up" },
+    { "keys": ["ctrl+down"], "command": "swap_line_down" },
+    { "keys": ["ctrl+shift+up"], "command": "scroll_lines", "args": {"amount": 1.0 } },
+    { "keys": ["ctrl+shift+down"], "command": "scroll_lines", "args": {"amount": -1.0 } },
+    { "keys": ["ctrl+shift+o"], "command": "prompt_open_folder" },
+    { "keys": ["ctrl+d"], "command": "find_under_expand" },
+
+    { "keys": ["ctrl+j", "ctrl+k"], "command": "sublime_linter_toggle_highlights" },
+    { "keys": ["ctrl+j", "a"], "command": "sublime_linter_panel_toggle" },
+    { "keys": ["ctrl+j", "d"], "command": "sublime_linter_line_report" },
+    { "keys": ["ctrl+j", "n"], "command": "sublime_linter_goto_error", "args": { "direction": "next", "wrap": true} },
+    { "keys": ["ctrl+j", "p"], "command": "sublime_linter_goto_error", "args": { "direction": "previous", "wrap": true } },
+
+    { "keys": ["ctrl+i"], "command": "plain_tasks_complete","context": [{ "key": "selector", "operator": "equal", "operand": "text.todo" }] },
+
+    { "keys": ["f12"], "command": "reindent", "args": {"single_line": false} },
+
+    { "keys": ["alt+d"], "command": "goto_documentation" },
+
+    { "keys": ["ctrl+alt+d"], "command": "selection_fields" },
+
+    { "keys": ["ctrl+j", "f"], "command": "merlin_type_command" },
+
+    {
+        "keys": ["ctrl+alt+l"],
+        "command": "latex_preview"
+    },
+    {
+        "keys": ["ctrl+t"],
+        "command": "latex_block_preview"
+    },
+    {
+        "keys": ["ctrl+shift+alt+l"],
+        "command": "latex_stop_preview"
+    },
+    {
+        "keys": ["ctrl+l"], "command": "expand_selection", "args": {"to": "line"}
+    },
+    {
+        "keys": ["enter"], "command": "orgmode_toggle_checkbox", "context": [ { "key": "selector", "operator": "equal", "operand": "orgmode.checkbox" } ]
+    },
+    {
+        "keys": ["enter"], "command": "orgmode_recalc_checkbox_summary", "context": [ { "key": "selector", "operator": "equal", "operand": "orgmode.checkbox.summary" } ]
+    },
+    {
+        "keys": ["enter"], "command": "orgmode_open_link", "context": [ { "key": "selector", "operator": "equal", "operand": "orgmode.link" } ]
+    },
+    {
+        "keys": ["enter"], "command": "orgmode_cycle_internal_link", "context": [ { "key": "selector", "operator": "equal", "operand": "orgmode.link.internal" } ]
+    }
+]
