@@ -7,4 +7,4 @@
 - sublime-text-3
 - termite
 - trizen
-- zsh & oh-my-zsh
+- zsh & oh-my-zsh & antigen
