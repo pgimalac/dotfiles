@@ -1,7 +1,5 @@
 ;====My Polybar Settings===================================
 
-
-
 ;====General Settings======================================
 [colors]
 adapta-cyan = #00BCD4
@@ -19,28 +17,36 @@ main-color = ${colors.adapta-cyan}
 for-modules = 1
 
 [bar/top]
-monitor = DP-0
+;monitor = :0
 width = 100%
-height = 30
+height = 22
 fixed-center = true
 tray-position = right
 tray-detached = false
 line-size = 2
 background = ${colors.bg}
 foreground = ${colors.fg}
-font-0 = "Fantasque Sans Mono:pixelsize=14;3"
-font-1 = "Iosevka Nerd Font:pixelsize=14;3"
-font-2 = "Iosevka Nerd Font:pixelsize=14;3"
-font-3 = MaterialIcons:size=14;0
-;font-4 = NotoSans:size=14;0
-;font-5 = MiscTermsyn:size=14:antialias=false;0
-;font-6 = MiscTermsynu:size=14:antialias=false;0
-;font-7 = Wuncon\ Siji:size=14;0
-;font-8 = unifont:size=14;0
-;font-9 = hack:size=14;0
-;font-10 = PowerlineSymbols:size=14;0
-;font-11 = xos4\ Terminus:size=14;0
-;font-12 = "FuraMono Nerd Font Mono:style=regular:size=14;0"
+
+font-0 = "Dejavu Sans:pixelsize=11;2"
+font-1 = "FontAwesome:pixelsize=11;2"
+font-2 = "Vera:pixelsize=11;2"
+font-3 = "Iosevka Nerd Font:pixelsize=11;2"
+font-4 = "hack:size=11;2"
+font-5 = "Weather Icons:size=12;2"
+;font-6 = "OpenSans:size=11;2"
+;font-7 = "Inconsolata:size=11;2"
+;font-8 = "Free Serif:size=11;2"
+;font-9 = "Arimo:size=11;2"
+;font-10 = "unifont:size=11;2"
+;font-11 = "Fantasque Sans Mono:pixelsize=14;3"
+;font-12 = MaterialIcons:size=14;0
+;font-13 = NotoSans:size=14;0
+;font-14 = MiscTermsyn:size=14:antialias=false;0
+;font-15 = MiscTermsynu:size=14:antialias=false;0
+;font-16 = Wuncon\ Siji:size=14;0
+;font-17 = PowerlineSymbols:size=14;0
+;font-18 = xos4\ Terminus:size=14;0
+;font-19 = "FuraMono Nerd Font Mono:style=regular:size=14;0"
 
 cursor-click = pointer
 ;==========================================================
@@ -48,30 +54,40 @@ cursor-click = pointer
 
 
 ;====Module settings+======================================
-modules-left = explorer workspaces google github reddit facebook youtube
+;other modules: explorer google github reddit facebook youtube pkg
+modules-left = workspaces weather
 modules-center = date
-modules-right = pkg xbacklight volume battery powermenu
+modules-right = updates xbacklight volume battery powermenu
 ;==========================================================
 
 [bar/bot]
-monitor = DP-0
+;monitor = :0
 bottom = true
 width = 100%
-height = 30
+height = 22
 fixed-center = true
 line-size = 2
 background = ${colors.bg}
 foreground = ${colors.fg}
-font-0 = "Fantasque Sans Mono:pixelsize=14;3"
-font-1 = "Iosevka Nerd Font:pixelsize=14;3"
-font-2 = "Iosevka Nerd Font:pixelsize=14;3"
-font-3 = MaterialIcons:size=14;0
 
+font-0 = "Dejavu Sans:pixelsize=11;2"
+font-1 = "FontAwesome:pixelsize=11;2"
+font-2 = "Vera:pixelsize=11;2"
+font-3 = "Iosevka Nerd Font:pixelsize=11;2"
+font-4 = "hack:size=11;2"
+font-5 = "Weather Icons:size=12;2"
+;font-6 = "OpenSans:size=11;2"
+;font-7 = "Inconsolata:size=11;2"
+;font-8 = "Free Serif:size=11;2"
+;font-9 = "Arimo:size=11;2"
+;font-10 = "unifont:size=11;2"
 
+;====Module settings+======================================
 modules-left = i3
 modules-center = wireless-network
 modules-right = cpu-graph memory
-
+;other module hack-speed
+;==========================================================
 
 ;====Left modules==========================================
 
@@ -79,8 +95,8 @@ modules-right = cpu-graph memory
 type = internal/xworkspaces
 pin-workspaces = false
 enable-click = true
-enable-scroll = false
-format-padding = 3
+enable-scroll = true
+format-padding = 1
 ;icon-0 = 1;❶
 ;icon-1 = 2;❷
 ;icon-2 = 3;❸
@@ -91,21 +107,37 @@ format-padding = 3
 ;icon-7 = 8;❽
 ;icon-8 = 9;❾
 ;icon-9 = 10;❿
-icon-default = 
 format = <label-state>
 format-background = ${colors.bg}
+label-active-underline = ${colors.main-color}
+label-focused-underline = ${colors.main-color}
+label-occupied-underline = ${colors.main-color}
+label-urgent-underline = ${colors.main-color}
 label-active = 
+label-focused = 
 label-occupied = 
 label-urgent = 
 label-empty = 
+;icon-default = 
+label-focused-padding = 1
 label-empty-padding = 1
 label-active-padding = 1
 label-urgent-padding = 1
 label-occupied-padding = 1
+label-focused-foreground = ${colors.fg}
 label-empty-foreground = ${colors.fg}
 label-active-foreground = ${colors.fg}
 label-urgent-foreground = ${colors.fg}
 label-occupied-foreground = ${colors.fg}
+
+[module/weather]
+type = custom/script
+exec = ~/.config/polybar/weather.sh
+exec-if = ping mozilla.com -c 1 2> /dev/null
+label-underline = ${colors.main-color}
+format-padding = 1
+interval = 300
+label-font = 6
 
 [module/explorer]
 type = custom/text
@@ -151,44 +183,31 @@ content = 
 content-padding = 1
 content-foreground = ${colors.fg}
 click-left = xdg-open https://www.youtube.com/
+
 ;==========================================================
 
 
 
 ;====Center modules========================================
 [module/date]
-type = internal/date
+type = custom/script
+exec = echo "  $(date +"%%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M:%S%%{F-}")"
 interval = 1
 label-padding = 1
 label-underline = ${colors.main-color}
-date =   %%{F#99}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M:%S%%{F-}
-date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
+click-left = ~/.config/polybar/calendar.sh --popup &
 ;==========================================================
 
 
 
 ;====Right modules=========================================
-;[module/mpd]
-;type = internal/mpd
-;format-online = <toggle> <label-song>
-;format-online =  <label-song>
-;alt icons =   
-;format-online-foreground = ${colors.ashade9}
-;format-online-background = ${colors.shade1}
-;format-online-padding = 1
-;icon-play = 喇
-;icon-pause = 
-;label-song-maxlen = 25
-;label-song-ellipsis = true
-;format-online-margin = ${margin.for-modules}
-
-[module/pkg]
+[module/updates]
 type = custom/script
 exec = bash ~/.config/polybar/checkupdates.sh
-;format-background = ${colors.shade2}
 format-underline = ${colors.main-color}
 format-padding = 1
 tail = true
+interval = 20
 format-margin = ${margin.for-modules}
 click-left = termite -e "trizen -Sryu" &
 click-right = termite -e "trizen -Sayu" &
@@ -241,8 +260,6 @@ bar-volume-empty-foreground = ${colors.adapta-grey}
 format-muted-margin = ${margin.for-modules}
 format-volume-margin = ${margin.for-modules}
 
-
-
 [module/wired-network]
 type = internal/network
 interface = enp4s0
@@ -250,27 +267,27 @@ format-overline = ${colors.main-color}
 
 [module/wireless-network]
 type = internal/network
-interface = wlp3s0
+interface = wlp2s0
 interval = 1.0
 ping-interval = 10
 
-format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 format-connected-overline = ${colors.main-color}
 label-connected = %essid%  %local_ip%    %downspeed%    %upspeed%
-label-disconnected =   not connected
+label-disconnected = not connected
 label-disconnected-foreground = #66
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
+;ramp-signal-0 = 
+;ramp-signal-1 = 
+;ramp-signal-2 = 
+;ramp-signal-3 = 
+;ramp-signal-4 = 
 
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
+;animation-packetloss-0 = 
+;animation-packetloss-0-foreground = #ffa64c
+;animation-packetloss-1 = 
+;animation-packetloss-1-foreground = ${bar/top.foreground}
+;animation-packetloss-framerate = 500
 
 [module/cpu-graph]
 type = internal/cpu
@@ -307,7 +324,7 @@ format-padding = 1
 format = <label> <bar-used>
 label = %percentage_used:2%%
 
-bar-used-width = 30
+bar-used-width = 20
 bar-used-foreground-0 = ${colors.main-color}
 bar-used-foreground-1 = #7eba90
 bar-used-foreground-2 = #fba922
@@ -343,29 +360,18 @@ format-discharging-margin = ${margin.for-modules}
 format-full-margin = ${margin.for-modules}
 format-full-prefix = " "
 ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
-ramp-capacity-5 = 
-ramp-capacity-6 = 
-ramp-capacity-7 = 
-ramp-capacity-8 = 
-ramp-capacity-9 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
 ramp-capacity-0-foreground = ${colors.adapta-red}
-ramp-capacity-1-foreground = ${colors.adapta-red}
-ramp-capacity-2-foreground = ${colors.adapta-red}
-ramp-capacity-3-foreground = ${colors.adapta-red}
-ramp-capacity-4-foreground = ${colors.adapta-yellow}
-ramp-capacity-5-foreground = ${colors.adapta-yellow}
+ramp-capacity-1-foreground = ${colors.adapta-yellow}
 ramp-capacity-foreground   = ${colors.fg}
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
-animation-charging-5 = 
-animation-charging-6 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
 animation-charging-foreground = ${colors.fg}
 animation-charging-framerate = 750
 
@@ -422,5 +428,13 @@ label-urgent-padding = 4
 label-separator = |
 label-separator-padding = 0
 label-separator-foreground = ${colors.main-color}
+
+[module/hack-speed]
+type = custom/script
+exec = ~/.config/polybar/hackspeed.sh
+tail = true
+
+format-padding = 1
+format-overline = ${colors.main-color}
 
 ;==========================================================
