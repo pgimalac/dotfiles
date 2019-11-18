@@ -1,6 +1,8 @@
 ### Installed packages
 
 - Alignment
+AsciiDoc
+Asciidoctor
 - Better OCaml
 - BracketHighlighter
 - Character Table
@@ -14,6 +16,8 @@
 - Java Velocity
 - Javatar
 - Jump Along Indent
+JSX
+Language - French - Français
 - Markdown Extended
 - MarkdownLivePreview
 - Merlin
