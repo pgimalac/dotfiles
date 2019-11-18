@@ -1,3 +1,3 @@
 #!/bin/sh
 
-pidof i3lock || i3lock -efi $HOME/Documents/archlock.png
+pidof i3lock 1> /dev/null || i3lockmore -ef --image-fill $HOME/Documents/archlock.png
