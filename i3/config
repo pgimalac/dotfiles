@@ -6,9 +6,6 @@
 # mod key
 set $mod Mod4
 
-# keyboard layout
-exec "setxkbmap -layout fr"
-
 # fonts
 font pango: hack, Awesome 9
 
@@ -85,7 +82,7 @@ bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -101,8 +98,8 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 #scratchpad
-#bindsym $mod+grave scratchpad show
-#bindsym $mod+Shift+grave move scratchpad
+bindsym $mod+grave scratchpad show
+bindsym $mod+Shift+grave move scratchpad
 
 #Swith with same key to precedent workspace
 workspace_auto_back_and_forth yes
@@ -121,14 +118,17 @@ set $tag8 "8"
 set $tag9 "9"
 set $tag10 "10"
 
-#assign [class="Min"] $tag3
-#for_window [class="Min"] move to workspace $tag3
+assign [class="Min"] $tag3
+for_window [class="Min"] move to workspace $tag3
 
 # exec startup apps
 # exec --no-startup-id i3-msg 'exec thunderbird'
+# exec --no-startup-id i3-msg 'exec geary'
+# exec --no-startup-id i3-msg 'workspace $tag1; exec google-chrome-stable &'
 exec i3-msg 'workspace $tag1; exec termite'
-#exec i3-msg 'workspace $tag2; exec subl'
-#exec i3-msg 'workspace $tag3; exec min'
+exec i3-msg 'workspace $tag2; exec subl'
+exec i3-msg 'workspace $tag3; exec firefox'
+exec i3-msg 'workspace $tag4; exec thunderbird'
 
 # exec --no-startup-id i3-msg 'workspace $tag4; exec termite -e "screen -rd weechat &"; workspace $tag2'
 # exec --no-startup-id i3-msg 'workspace $tag10; exec termite -e "glances"; workspace $tag2'
@@ -156,19 +156,16 @@ bindsym $mod+Shift+a exec ~/.i3/rofi_powermenu.sh
 #rofi_custom menu
 bindsym $mod+x exec ~/.i3/rofi_custom.sh
 
-# apps
-bindsym $mod+Control+t exec thunar
-bindsym $mod+Control+n exec connman-gtk
-
 # by class
 ## floatings
 for_window [class="Cssh"] floating enable, border normal
 for_window [class="XTerm"] floating enable, border normal
 for_window [class="feh"] floating enable, border normal
 for_window [class="Yad" title="yad-calendar"] floating enable
+for_window [class="gnome-screenshot"] floating enable, border normal
 
 # assigns focus
-#assign [class="Thunderbird"] $tag3
+assign [class="Min"] $tag3
 
 #toggle workspace's display screen
 bindsym $mod+less move workspace to output right
@@ -217,7 +214,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -241,7 +238,6 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id menutray -i
 
-
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 3%+ unmute #increase sound volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 3%- unmute #decrease sound volume
@@ -249,8 +245,8 @@ bindsym XF86AudioMute exec --no-startup-id amixer -c 0 set Master toggle && amix
 # mute sound
 
 # Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
 
 # start nm-applet
 exec --no-startup-id nm-applet --sm-disable
@@ -265,13 +261,13 @@ workspace_layout default
 default_border none
 
 # start dropbox
-exec --no-startup-id dropbox
-
-#exec --no-startup-id numlockx on
+# exec --no-startup-id dropbox
+exec --no-startup-id nextcloud
+exec --no-startup-id numlockx on
 
 # some shortcuts
 bindsym Print exec gnome-screenshot -i
-#bindsym XF86KbdBrightnessUp exec /usr/local/bin/kb-light.py + 1
-#bindsym XF86KbdBrightnessDown exec /usr/local/bin/kb-light.py - 1
+bindsym XF86KbdBrightnessUp exec /usr/local/bin/kb-light.py + 1
+bindsym XF86KbdBrightnessDown exec /usr/local/bin/kb-light.py - 1
 
 exec_always alsactl restore

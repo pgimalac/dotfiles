@@ -8,6 +8,31 @@
         },
         "clang++": {
             "args": "-falso-important"
-        }
+        },
+        "gcc": {
+            "disable": false,
+            "executable": ["gcc"],
+            "args": ["-fsyntax-only", "-std=c99"],
+            "I": [
+                "${file_path}",
+                "${file_path}/include",
+                "${file_path}/lib",
+                "${folder}/include",
+                "/usr/local/include",
+            ],
+            "excludes": [],
+        },
+        "g++": {
+            "disable": false,
+            "executable": ["g++"],
+            "args": ["-fsyntax-only", "-std=c++17"],
+            "I": [
+                "${file_path}",
+                "${file_path}/include",
+                "${folder}/include",
+                "/usr/local/include",
+            ],
+            "excludes": [],
+        },
     }
 }

@@ -27,13 +27,16 @@ line-size = 2
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-font-0 = "Dejavu Sans:pixelsize=11;2"
-font-1 = "FontAwesome:pixelsize=11;2"
-font-2 = "Vera:pixelsize=11;2"
-font-3 = "Iosevka Nerd Font:pixelsize=11;2"
-font-4 = "hack:size=11;2"
-font-5 = "Weather Icons:size=12;2"
-;font-6 = "OpenSans:size=11;2"
+font-0 = "Dejavu Sans:pixelsize=14;3"
+font-1 = "FontAwesome:pixelsize=14;3"
+font-2 = "Vera:pixelsize=14;3"
+font-3 = "Iosevka Nerd Font:pixelsize=14;3"
+font-4 = "hack:size=14;3"
+font-5 = "Weather Icons:size=12;3"
+font-6 = "Fantasque Sans Mono:pixelsize=14;3"
+font-7 = "Iosevka Nerd Font:pixelsize=14;3"
+font-8 = MaterialIcons:size=14;0
+;font-6 = "OpenSans:size=14;2"
 ;font-7 = "Inconsolata:size=11;2"
 ;font-8 = "Free Serif:size=11;2"
 ;font-9 = "Arimo:size=11;2"
@@ -54,7 +57,7 @@ cursor-click = pointer
 
 
 ;====Module settings+======================================
-;other modules: explorer google github reddit facebook youtube pkg
+; other modules: explorer google github reddit facebook youtube
 modules-left = workspaces weather
 modules-center = date
 modules-right = updates xbacklight volume battery powermenu
@@ -70,12 +73,15 @@ line-size = 2
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-font-0 = "Dejavu Sans:pixelsize=11;2"
-font-1 = "FontAwesome:pixelsize=11;2"
-font-2 = "Vera:pixelsize=11;2"
-font-3 = "Iosevka Nerd Font:pixelsize=11;2"
-font-4 = "hack:size=11;2"
-font-5 = "Weather Icons:size=12;2"
+font-0 = "Dejavu Sans:pixelsize=14;3"
+font-1 = "FontAwesome:pixelsize=14;3"
+font-2 = "Vera:pixelsize=14;3"
+font-3 = "Iosevka Nerd Font:pixelsize=14;3"
+font-4 = "hack:size=14;3"
+font-5 = "Weather Icons:size=12;3"
+font-6 = "Fantasque Sans Mono:pixelsize=14;3"
+font-7 = "Iosevka Nerd Font:pixelsize=14;3"
+font-8 = MaterialIcons:size=14;0
 ;font-6 = "OpenSans:size=11;2"
 ;font-7 = "Inconsolata:size=11;2"
 ;font-8 = "Free Serif:size=11;2"
@@ -267,7 +273,7 @@ format-overline = ${colors.main-color}
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = wlp3s0
 interval = 1.0
 ping-interval = 10
 

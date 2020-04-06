@@ -1,13 +1,14 @@
 ### Installed packages
 
 - Alignment
-AsciiDoc
-Asciidoctor
+- AsciiDoc
+- Asciidoctor
 - Better OCaml
 - BracketHighlighter
 - Character Table
 - Colorsublime
 - EclipseJavaFormatter
+- FileCommands
 - Git
 - GitGutter
 - Glue
@@ -15,10 +16,13 @@ Asciidoctor
 - Increment Selection
 - Java Velocity
 - Javatar
+- JSX
 - Jump Along Indent
-JSX
-Language - French - Français
+- Language - French - Français
 - Markdown Extended
+- Markdown Extended
+- Markdown HTML Preview
+- MarkdownLivePreview
 - MarkdownLivePreview
 - Merlin
 - Monokai Extended
@@ -28,14 +32,20 @@ Language - French - Français
 - ocp-indent
 - Package Control
 - PackageResourceViewer
+- rsub
 - Rust Enhanced
 - RustAutoComplete
+- RustAutoImport
 - RustFmt
 - SideBarEnhancements
 - SublimeLinter
 - SublimeLinter-clang
+- SublimeLinter-contrib-bashate
 - SublimeLinter-gcc
 - SublimeLinter-javac
+- SublimeLinter-jsl
 - SublimeLinter-pylint
 - TeXPreview
+- Vuejs Complete Package
+- WordCount
 - Wrap Plus

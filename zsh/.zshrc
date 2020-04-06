@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -12,12 +14,6 @@ export ZSH="/home/pierre/.oh-my-zsh"
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="xxf"
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -57,61 +53,138 @@ COMPLETION_WAITING_DOTS="true"
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
+    git
+    git-extras
+    autojump
+    web-search
+    copyfile
+    compleat
+    extract
 )
 
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
-
-# export MANPATH="/usr/local/man:$MANPATH"
-
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=fr_FR.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+else
+    export EDITOR='subl'
+fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
+export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
+# Most variables for Man Pages
+export MOST_TERMCAP_mb=$'\e[01;31m'       # begin blinking
+export MOST_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
+export MOST_TERMCAP_me=$'\e[0m'           # end mode
+export MOST_TERMCAP_se=$'\e[0m'           # end standout-mode
+export MOST_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
+export MOST_TERMCAP_ue=$'\e[0m'           # end underline
+export MOST_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
+export PAGER="most"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# fzf variables
+export FZF_DEFAULT_COMMAND='fd --type f --color=never'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND='fd --type d . --color=never'
 
+# my aliases
+alias sed="ambr"
+alias du="dust"
+alias bat="PAGER=less bat"
+alias cat="bat -A -pp"
+alias find=fd
+alias grep=rg
+alias ls="exa -h"
+alias tree="exa --tree -h"
 alias zathura="zathura --fork"
 alias gs="git status"
 alias gcam="git commit -am"
 alias gcm="git commit -m"
+alias gc="git checkout"
 alias gpush="git push"
 alias gpull="git pull"
+alias gp="git pull && git push"
 alias zshrc='$EDITOR ~/.zshrc'
 alias h=history
 alias tmp="cd /tmp"
+alias sl=ls
+alias ssh='TERM=xterm ssh'
+
+# some nice functions
+mkcd () { mkdir "$@" && cd ${@:$#} }
+lcd () { cd "$1" && ls ${@:2:$#} }
+
+fzf_change_directory() {
+    local directory
+    directory=$(
+        fd --type d | \
+        fzf --query="$1" --no-multi --select-1 --exit-0 \
+            --preview 'tree -C {} | head -100'
+    )
+    if [[ -n $directory ]]; then
+        cd "$directory"
+    fi
+}
+
+fzf_find_edit() {
+    local file
+    file=$(
+        fzf --query="$1" --no-multi --select-1 --exit-0 \
+            --preview 'bat --color=always --line-range :500 {}'
+    )
+    if [[ -n $file ]]; then
+        $EDITOR "$file"
+    fi
+}
+
+fzf_grep_edit(){
+    if [[ $# == 0 ]]; then
+        echo 'Error: search term was not provided.'
+        return
+    fi
+    local match
+    match=$(
+        rg --color=never --line-number "$1" |
+        fzf --no-multi --delimiter : \
+            --preview "bat --color=always --line-range {2}: {1}"
+    )
+    local file
+    file=$(echo "$match" | cut -d':' -f1)
+    if [[ -n $file ]]; then
+        $EDITOR "$file" +$(echo "$match" | cut -d':' -f2)
+    fi
+}
+
+fzf_kill() {
+    pid_col=2
+    local pids
+    pids=$(
+        ps -f -u $USER |
+        sed 1d |
+        fzf --multi |
+        tr -s '[:blank:]' |
+        cut -d' ' -f"$pid_col"
+    )
+    if [[ -n $pids ]]; then
+        echo "$pids" | xargs kill -9 "$@"
+    fi
+}
+
+alias fkill='fzf_kill'
+alias fge='fzf_grep_edit'
+alias ffe='fzf_find_edit'
+alias fcd='fzf_change_directory'
 
 export OCAMLRUNPARAM="b1"
-export EDITOR="subl"
-
 # opam configuration
-test -r /home/pierre/.opam/opam-init/init.zsh && . /home/pierre/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# test -r /home/pierre/.opam/opam-init/init.zsh && . /home/pierre/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
