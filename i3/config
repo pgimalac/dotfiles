@@ -128,7 +128,7 @@ for_window [class="Min"] move to workspace $tag3
 exec i3-msg 'workspace $tag1; exec termite'
 exec i3-msg 'workspace $tag2; exec subl'
 exec i3-msg 'workspace $tag3; exec firefox'
-exec i3-msg 'workspace $tag4; exec thunderbird'
+# exec i3-msg 'workspace $tag4; exec thunderbird'
 
 # exec --no-startup-id i3-msg 'workspace $tag4; exec termite -e "screen -rd weechat &"; workspace $tag2'
 # exec --no-startup-id i3-msg 'workspace $tag10; exec termite -e "glances"; workspace $tag2'
@@ -151,10 +151,10 @@ smart_borders on
 #############################################################################################################################
 
 #rofi_power menu
-bindsym $mod+Shift+a exec ~/.i3/rofi_powermenu.sh
+#bindsym $mod+Shift+a exec ~/.i3/rofi_powermenu.sh
 
 #rofi_custom menu
-bindsym $mod+x exec ~/.i3/rofi_custom.sh
+#bindsym $mod+x exec ~/.i3/rofi_custom.sh
 
 # by class
 ## floatings
@@ -162,7 +162,7 @@ for_window [class="Cssh"] floating enable, border normal
 for_window [class="XTerm"] floating enable, border normal
 for_window [class="feh"] floating enable, border normal
 for_window [class="Yad" title="yad-calendar"] floating enable
-for_window [class="gnome-screenshot"] floating enable, border normal
+for_window [class="Gnome-screenshot"] floating enable, border normal
 
 # assigns focus
 assign [class="Min"] $tag3
@@ -239,8 +239,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 #exec --no-startup-id menutray -i
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 3%+ unmute #increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 3%- unmute #decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Speaker unmute && amixer -c  0 set Headphone unmute && amixer -c 0 set Master 3%+ unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Speaker unmute && amixer -c  0 set Headphone unmute && amixer -c 0 set Master 3%- unmute
 bindsym XF86AudioMute exec --no-startup-id amixer -c 0 set Master toggle && amixer -c 0 set Headphone unmute && amixer -c 0 set Speaker unmute
 # mute sound
 
@@ -260,10 +260,12 @@ default_orientation horizontal
 workspace_layout default
 default_border none
 
-# start dropbox
 # exec --no-startup-id dropbox
 exec --no-startup-id nextcloud
 exec --no-startup-id numlockx on
+exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id dunst -config /home/pierre/.config/dunst/config
+exec --no-startup-id /home/pierre/.config/i3/power_notification.sh
 
 # some shortcuts
 bindsym Print exec gnome-screenshot -i

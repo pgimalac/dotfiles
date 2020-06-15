@@ -20,9 +20,7 @@
 - Jump Along Indent
 - Language - French - Français
 - Markdown Extended
-- Markdown Extended
 - Markdown HTML Preview
-- MarkdownLivePreview
 - MarkdownLivePreview
 - Merlin
 - Monokai Extended
@@ -32,6 +30,7 @@
 - ocp-indent
 - Package Control
 - PackageResourceViewer
+- ProjectManager
 - rsub
 - Rust Enhanced
 - RustAutoComplete
@@ -45,6 +44,7 @@
 - SublimeLinter-javac
 - SublimeLinter-jsl
 - SublimeLinter-pylint
+- SystemVerilog
 - TeXPreview
 - Vuejs Complete Package
 - WordCount

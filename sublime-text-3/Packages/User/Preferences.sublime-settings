@@ -29,9 +29,10 @@
 	"auto_complete_cycle": true,
 	"auto_complete_delay": 20,
 	"bold_folder_labels": true,
+	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Monokai Extended/Monokai Extended Bright.tmTheme",
 	"detect_indentation": true,
-	"dictionary": "Packages/Language - English/en_US.dic",
+	"dictionary": "Packages/Language - French/French.dic",
 	"dpi_scale": 1.0,
 	"draw_minimap": false,
 	"draw_minimap_border": false,
@@ -78,6 +79,7 @@
 		"Javatar",
 		"ocp-indent",
 		"Rust",
+		"SublimeHaskell",
 		"Vintage"
 	],
 	"ignored_words":
