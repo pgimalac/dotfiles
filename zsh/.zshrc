@@ -4,16 +4,18 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 fpath=($fpath $HOME/.rustcompl/_rustup)
-# no idea how completion works and couldn't make it work...
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pierre/.oh-my-zsh"
+# export ZSH="/home/pierre/Documents/ohmyzsh"
+# export ZSH="/tmp/test/ohmyzsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="xxf"
+ZSH_THEME="pierre"
+# ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -62,17 +64,28 @@ plugins=(
     git
     git-extras
     autojump
-    web-search
-    copyfile
     compleat
     extract
+    # web-search
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    # safe-paste
 )
+# safe-paste
+
+# faster paste (does not call highlight on each character)
+
+# but coloration problems due to zsh_autosuggestions
+# and weirdly when typing something and going up in the history it prompts
+# every commands, not just the ones starting with what you type
+
+# merged a pull request on my fork to cancel that last bug
+# but a relatively similar one appeared then
 
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
-
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
@@ -101,10 +114,10 @@ export FZF_ALT_C_COMMAND='fd --type d . --color=never'
 alias sed="ambr"
 alias du="dust"
 alias bat="PAGER=less bat"
-alias cat="bat -A -pp"
+alias cat="bat -pp"
 alias find=fd
 alias grep=rg
-alias ls="exa -h"
+alias ls="exa -h -g"
 alias tree="exa --tree -h"
 alias zathura="zathura --fork"
 alias gs="git status"
@@ -166,25 +179,55 @@ fzf_grep_edit(){
 }
 
 fzf_kill() {
-    pid_col=2
-    local pids
-    pids=$(
-        ps -f -u $USER |
-        sed 1d |
-        fzf --multi |
-        tr -s '[:blank:]' |
-        cut -d' ' -f"$pid_col"
+    local user_col=1 pid_col=2 ppid_col=3 lines
+
+    lines=$(
+        ps axo user,pid,ppid,%cpu,%mem,state,start,cmd --sort -pid --no-header |
+        fzf --multi -e |
+        tr -s '[:blank:]'
     )
-    if [[ -n $pids ]]; then
-        echo "$pids" | xargs kill -9 "$@"
-    fi
+
+    while IFS= read -r line; do
+        if [[ -z "$line" ]]; then
+            break
+        fi
+
+        pid=$(
+            echo $line |
+            cut -d' ' -f"$pid_col"
+        )
+
+        user=$(
+            echo "$line" |
+            cut -d' ' -f"$user_col"
+        )
+
+        if [[ "$user" == "$USER" ]]; then
+            echo "kill -KILL $pid"
+            kill -KILL "$pid"
+        else
+            echo "sudo kill -KILL $pid"
+            sudo kill -KILL "$pid"
+        fi
+    done <<< "$lines"
+
 }
 
+# some variables to personnalize plugins
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+bindkey '^ ' autosuggest-accept
+
+
+# some fzf aliases
 alias fkill='fzf_kill'
 alias fge='fzf_grep_edit'
 alias ffe='fzf_find_edit'
 alias fcd='fzf_change_directory'
 
+
+# ocaml
 export OCAMLRUNPARAM="b1"
 # opam configuration
 # test -r /home/pierre/.opam/opam-init/init.zsh && . /home/pierre/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
