@@ -295,9 +295,13 @@
 # NOTE: It might be helpful to run dunst -print in a terminal in order
 # to find fitting options for rules.
 
-#[espeak]
-#    summary = "*"
-#    script = dunst_espeak.sh
+[kde-connect]
+    appname = "KDE Connect"
+    format = "<b>%s</b>\n%b"
+
+[notify-send]
+    appname = "notify-send"
+    format = "<b>%s</b>\n%b"
 
 #[script-test]
 #    summary = "*script*"
