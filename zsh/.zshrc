@@ -60,17 +60,20 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-    git
-    git-extras
-    autojump
-    compleat
-    extract
-    # web-search
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    # safe-paste
-)
+
+if [ -z "$plugins" ]; then
+    plugins=(
+        git
+        git-extras
+        autojump
+        compleat
+        extract
+        # web-search
+        zsh-autosuggestions
+        zsh-syntax-highlighting
+        # safe-paste
+    )
+fi
 # safe-paste
 
 # faster paste (does not call highlight on each character)

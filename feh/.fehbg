@@ -1,2 +1,2 @@
 #!/bin/sh
-feh --bg-scale '/home/pierre/Documents/archbackground.png' 
+feh --bg-scale '/home/pierre/.config/archbackground.png'

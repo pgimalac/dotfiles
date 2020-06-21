@@ -13,7 +13,7 @@ font pango: hack, Awesome 9
 new_window pixel
 
 # start feh
-exec --no-startup-id ~/.fehbg
+exec --no-startup-id ~/.config/.fehbg
 
 # start compton
 exec --no-startup-id compton --config ~/.config/i3/compton.conf
@@ -163,6 +163,7 @@ for_window [class="XTerm"] floating enable, border normal
 for_window [class="feh"] floating enable, border normal
 for_window [class="Yad" title="yad-calendar"] floating enable
 for_window [class="Gnome-screenshot"] floating enable, border normal
+for_window [class="kdeconnect-sms"] floating enable, border normal
 
 # assigns focus
 assign [class="Min"] $tag3

@@ -1,0 +1,47 @@
+{
+	"256color": true,
+	"default_config":
+	{
+		"linux": "Zsh",
+		"osx": null,
+		"windows": "Command Prompt"
+	},
+	"preserve_keys" : [
+        "ctrl+p",
+        "ctrl+w",
+        "echap"
+    ],
+	"enable": true,
+	"platforms":
+	[
+		"linux",
+		"osx"
+	],
+	"theme": "user",
+	"unix_lang": "fr_FR.UTF-8",
+	"unix_term": "xterm",
+	"user_theme_colors": {
+        "background": "#303a40",
+        "foreground": "#ffffff",
+        "caret": "white",
+        "block_caret": "white",
+        "selection": "#ffffff",
+        "selection_foreground": "#303a40",
+        "00": "#000000",  // black
+        "01": "#ee4242",  // red
+        "02": "#83d386",  // green
+        "03": "#ffff00",  // brown
+        "04": "#32e5ff",  // blue
+        "05": "#f570bf",  // magenta
+        "06": "#99f2ff",  // cyan
+        "07": "#e5e5e5",  // white
+        "08": "#7f7f7f",  // light_black
+        "09": "#ff0000",  // light_red
+        "10": "#85d785",  // light_green
+        "11": "#ffff00",  // light_brown
+        "12": "#00dfff",  // light_blue
+        "13": "#ff00ff",  // light_magenta
+        "14": "#00ffff",  // light_cyan
+        "15": "#ffffff",  // light_white
+    },
+}
