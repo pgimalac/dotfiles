@@ -22,7 +22,7 @@ source_list=""
 prefix=""
 
 function log {
-    if [ $verbose = "0" ]; then
+    if [ $verbose = "1" ]; then
         echo "$@"
     fi
 }
@@ -82,7 +82,7 @@ if [ $backup = "1" ]; then
     args="$args -b"
 fi
 
-# echo "$args"
+log "Using \"$args\" as args."
 
 if [ -z "$source_list" ]; then
     err "No source file given as argument." 1>&2
@@ -115,15 +115,8 @@ while read -r line; do
             to="$prefix/$to"
         fi
 
-        if [ "$verbose" = "1" ]; then
-            if [[ `diff "$from" "$to"` ]]; then
-                # diff "$from" "$to"
-                echo "diff \"$from\" \"$to\""
-                exit 1
-            fi
-            # echo "ln $args \"$from\" \"$to\""
-        fi
+        log "ln $args \"$from\" \"$to\""
 
-        # ln $args "$from" "$to"
+        ln $args "$from" "$to"
         )
 done < "$source_list"
