@@ -14,6 +14,7 @@
             "executable": ["gcc"],
             "args": ["-fsyntax-only", "-Wall", "-Wextra"],
             "I": [
+                "/home/pierre/Documents/mini-os/src",
                 "${file_path}",
                 "${file_path}/include",
                 "${file_path}/lib",
@@ -36,6 +37,9 @@
         },
         "bashate": {
             "ignore": ["E006"],
+        },
+        "pylint": {
+            "args": ["--load-plugins", "pylint_flask", "--load-plugins", "pylint_flask_sqlalchemy"]
         }
     }
 }

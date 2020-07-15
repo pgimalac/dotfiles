@@ -50,7 +50,7 @@ while [[ $# -gt 0 ]]; do
             backup=1;;
 
         "-p"|"--prefix")
-            if [ -z "$p" ]; then
+            if [ -z "$prefix" ]; then
                 prefix="$2"
                 shift
             else

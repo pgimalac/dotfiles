@@ -27,29 +27,19 @@ line-size = 2
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-font-0 = "Dejavu Sans:pixelsize=14;3"
+;
+; to look for an installed font
+; fc-list | grep -o ':.*$' | grep fontName
+;
+
+font-0 = "DejaVu Sans:style=Book:pixelsize=14;3"
 font-1 = "FontAwesome:pixelsize=14;3"
-font-2 = "Vera:pixelsize=14;3"
-font-3 = "Iosevka Nerd Font:pixelsize=14;3"
-font-4 = "hack:size=14;3"
-font-5 = "Weather Icons:size=12;3"
-font-6 = "Fantasque Sans Mono:pixelsize=14;3"
-font-7 = "Iosevka Nerd Font:pixelsize=14;3"
-font-8 = MaterialIcons:size=14;0
-;font-6 = "OpenSans:size=14;2"
-;font-7 = "Inconsolata:size=11;2"
-;font-8 = "Free Serif:size=11;2"
-;font-9 = "Arimo:size=11;2"
-;font-10 = "unifont:size=11;2"
-;font-11 = "Fantasque Sans Mono:pixelsize=14;3"
-;font-12 = MaterialIcons:size=14;0
-;font-13 = NotoSans:size=14;0
-;font-14 = MiscTermsyn:size=14:antialias=false;0
-;font-15 = MiscTermsynu:size=14:antialias=false;0
-;font-16 = Wuncon\ Siji:size=14;0
-;font-17 = PowerlineSymbols:size=14;0
-;font-18 = xos4\ Terminus:size=14;0
-;font-19 = "FuraMono Nerd Font Mono:style=regular:size=14;0"
+font-2 = "Bitstream Vera Sans:style=Roman:pixelsize=14;3"
+font-3 = "Hack Nerd Font:style=Regular:pixelsize=14;3"
+font-4 = "Weather Icons:size=12;3"
+font-5 = "Fantasque Sans Mono:style=Regular:pixelsize=14;3"
+font-6 = "Material Icons:style=Regular:size=14;0"
+font-7 = "Wuncon Siji:style=Regular:size=11;2"
 
 cursor-click = pointer
 ;==========================================================
@@ -73,20 +63,13 @@ line-size = 2
 background = ${colors.bg}
 foreground = ${colors.fg}
 
-font-0 = "Dejavu Sans:pixelsize=14;3"
+font-0 = "DejaVu Sans:style=Book:pixelsize=14;3"
 font-1 = "FontAwesome:pixelsize=14;3"
-font-2 = "Vera:pixelsize=14;3"
-font-3 = "Iosevka Nerd Font:pixelsize=14;3"
-font-4 = "hack:size=14;3"
-font-5 = "Weather Icons:size=12;3"
-font-6 = "Fantasque Sans Mono:pixelsize=14;3"
-font-7 = "Iosevka Nerd Font:pixelsize=14;3"
-font-8 = MaterialIcons:size=14;0
-;font-6 = "OpenSans:size=11;2"
-;font-7 = "Inconsolata:size=11;2"
-;font-8 = "Free Serif:size=11;2"
-;font-9 = "Arimo:size=11;2"
-;font-10 = "unifont:size=11;2"
+font-2 = "Bitstream Vera Sans:style=Roman:pixelsize=14;3"
+font-3 = "Hack Nerd Font:style=Regular:pixelsize=14;3"
+font-4 = "Fantasque Sans Mono:style=Regular:pixelsize=14;3"
+font-5 = "Material Icons:style=Regular:size=14;0"
+font-6 = "Wuncon Siji:style=Regular:size=11;2"
 
 ;====Module settings+======================================
 modules-left = i3
@@ -143,7 +126,7 @@ exec-if = ping mozilla.com -c 1 2> /dev/null
 label-underline = ${colors.main-color}
 format-padding = 1
 interval = 300
-label-font = 6
+label-font = 5
 
 [module/explorer]
 type = custom/text
