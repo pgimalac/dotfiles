@@ -40,6 +40,9 @@
         },
         "pylint": {
             "args": ["--load-plugins", "pylint_flask", "--load-plugins", "pylint_flask_sqlalchemy"]
+        },
+        "jshint": {
+            "args": ["--config", "/home/pierre/.config/.jshintrc"]
         }
     }
 }
