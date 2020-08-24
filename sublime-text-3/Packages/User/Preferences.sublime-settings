@@ -80,6 +80,7 @@
 		"ocp-indent",
 		"Rust",
 		"SublimeHaskell",
+		"SublimeLinter-jshint",
 		"Terminal",
 		"Vintage"
 	],
