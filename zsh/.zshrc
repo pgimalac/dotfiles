@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$PATH:$HOME/.opam/default/bin
 
 fpath=($fpath $HOME/.rustcompl/_rustup)
 
@@ -123,6 +123,7 @@ alias grep=rg
 alias ls="exa -h -g"
 alias tree="exa --tree -h"
 alias zathura="zathura --fork"
+alias git="EDITOR=vim git"
 alias gs="git status"
 alias gcam="git commit -am"
 alias gcm="git commit -m"

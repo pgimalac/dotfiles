@@ -23,7 +23,8 @@
 		"Torvalds",
 		"free",
 		"Debian",
-		"Unix"
+		"Unix",
+		"anymore"
 	],
 	"always_show_minimap_viewport": false,
 	"auto_complete_cycle": true,
@@ -75,6 +76,7 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
+		"Clang Format",
 		"JavaIME",
 		"Javatar",
 		"ocp-indent",
