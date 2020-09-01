@@ -135,7 +135,8 @@ alias zshrc='$EDITOR ~/.zshrc'
 alias h=history
 alias tmp="cd /tmp"
 alias sl=ls
-alias ssh='TERM=xterm ssh'
+alias ssh="TERM=xterm ssh"
+alias music="vlc $HOME/Nextcloud/Musique/other/* --random > /dev/null 2>&1 &!"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }
