@@ -9,7 +9,7 @@ adapta-yellow = #C9BC0E
 adapta-lightgreen = #4DB6AC
 adapta-green = #009688
 adapta-grey = #475359
-bg = #222D32
+bg = #e8222D32
 fg = #CFD8DC
 main-color = ${colors.adapta-cyan}
 
