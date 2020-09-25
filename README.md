@@ -1,15 +1,2 @@
-### Config files
-
-- dunst
-- feh
-- i3 & compton
-- kazam
-- neofetch
-- pacman
-- polybar
-- pylint
-- sublime-text-3
-- termite
-- trizen
-- zsh & oh-my-zsh & antigen
-
+# Dotfiles
+Each machine is on its own branch (for now there's only one but one day I may add others)
