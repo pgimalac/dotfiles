@@ -8,13 +8,11 @@
 		"Kripke",
 		"hashmap",
 		"hashset",
-		"tlv",
 		"Telecom",
 		"prépa",
 		"Ocaml",
 		"Raspberry",
 		"pgcd",
-		"ssi",
 		"Dijkstra",
 		"Eclipse",
 		"Stallman",
@@ -24,7 +22,7 @@
 		"free",
 		"Debian",
 		"Unix",
-		"anymore"
+		"microcontroleur"
 	],
 	"always_show_minimap_viewport": false,
 	"auto_complete_cycle": true,
@@ -33,7 +31,7 @@
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Monokai Extended/Monokai Extended Bright.tmTheme",
 	"detect_indentation": true,
-	"dictionary": "Packages/Language - French/French.dic",
+	"dictionary": "Packages/Language - English/en_GB.dic",
 	"dpi_scale": 1.0,
 	"draw_minimap": false,
 	"draw_minimap_border": false,
@@ -65,7 +63,9 @@
 		"*.psd",
 		"*.db",
 		"*.sublime-workspace",
-		"*.sublime-project"
+		"*.sublime-project",
+		"target/*", // rust project bin directory
+		"bin/*"
 	],
 	"folder_exclude_patterns":
 	[

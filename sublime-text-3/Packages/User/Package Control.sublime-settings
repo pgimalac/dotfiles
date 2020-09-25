@@ -6,6 +6,7 @@
 	"installed_packages":
 	[
 		"Alignment",
+		"ARM Assembly",
 		"Asciidoctor",
 		"Better OCaml",
 		"BracketHighlighter",
