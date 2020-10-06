@@ -38,8 +38,7 @@ font-2 = "Bitstream Vera Sans:style=Roman:pixelsize=14;3"
 font-3 = "Hack Nerd Font:style=Regular:pixelsize=14;3"
 font-4 = "Weather Icons:size=12;3"
 font-5 = "Fantasque Sans Mono:style=Regular:pixelsize=14;3"
-font-6 = "Material Icons:style=Regular:size=14;0"
-font-7 = "Wuncon Siji:style=Regular:size=11;2"
+font-6 = "Wuncon Siji:style=Regular:size=11;2"
 
 cursor-click = pointer
 ;==========================================================
@@ -68,8 +67,7 @@ font-1 = "FontAwesome:pixelsize=14;3"
 font-2 = "Bitstream Vera Sans:style=Roman:pixelsize=14;3"
 font-3 = "Hack Nerd Font:style=Regular:pixelsize=14;3"
 font-4 = "Fantasque Sans Mono:style=Regular:pixelsize=14;3"
-font-5 = "Material Icons:style=Regular:size=14;0"
-font-6 = "Wuncon Siji:style=Regular:size=11;2"
+font-5 = "Wuncon Siji:style=Regular:size=11;2"
 
 ;====Module settings+======================================
 modules-left = i3

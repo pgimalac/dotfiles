@@ -64,7 +64,7 @@
 		"*.db",
 		"*.sublime-workspace",
 		"*.sublime-project",
-		"target/*", // rust project bin directory
+		"target/*",
 		"bin/*"
 	],
 	"folder_exclude_patterns":
