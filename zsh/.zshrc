@@ -236,3 +236,6 @@ alias fcd='fzf_change_directory'
 export OCAMLRUNPARAM="b1"
 # opam configuration
 # test -r /home/pierre/.opam/opam-init/init.zsh && . /home/pierre/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# to remove a bug with bat completion
+compdef '' bat
