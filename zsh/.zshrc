@@ -89,6 +89,8 @@ source $ZSH/oh-my-zsh.sh
 
 # enables ** recursive patterns
 setopt extended_glob
+# no duplicate consecutive commands in history
+setopt histignoredups
 
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
