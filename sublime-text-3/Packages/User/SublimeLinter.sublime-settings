@@ -12,7 +12,7 @@
         "gcc": {
             "disable": false,
             "executable": ["gcc"],
-            "args": ["-fsyntax-only", "-Wall", "-Wextra"],
+            "args": ["-Wall", "-Wextra", "-std=gnuc99"],
             "I": [
                 "/home/pierre/Documents/mini-os/src",
                 "${file_path}",

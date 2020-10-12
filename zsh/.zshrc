@@ -87,6 +87,9 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
+# enables ** recursive patterns
+setopt extended_glob
+
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
 # Preferred editor for local and remote sessions
