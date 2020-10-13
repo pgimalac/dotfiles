@@ -1,4 +1,22 @@
 [
+    { "keys": ["ctrl+alt+f"], "command": "clang_format",
+        "context":
+        [
+            {"key": "selector", "operator": "equal", "operand": "source.c++"}
+        ],
+    },
+    { "keys": ["ctrl+alt+f"], "command": "clang_format",
+        "context":
+        [
+            {"key": "selector", "operator": "equal", "operand": "source.c"}
+        ],
+    },
+    { "keys": ["ctrl+alt+f"], "command": "clang_format",
+        "context":
+        [
+            {"key": "selector", "operator": "equal", "operand": "source.js"}
+        ]
+    },
     { "keys": ["ctrl+up"], "command": "swap_line_up" },
     { "keys": ["ctrl+down"], "command": "swap_line_down" },
     { "keys": ["ctrl+shift+up"], "command": "scroll_lines", "args": {"amount": 1.0 } },
@@ -49,8 +67,11 @@
     {
         "keys": ["enter"], "command": "orgmode_cycle_internal_link", "context": [ { "key": "selector", "operator": "equal", "operand": "orgmode.link.internal" } ]
     },
-    { "keys": ["alt+tab"], "command": "next_view" },
-    { "keys": ["alt+shift+tab"], "command": "prev_view" },
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+    { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+    { "keys": ["alt+tab"], "command": "next_view_in_stack" },
+    { "keys": ["alt+shift+tab"], "command": "prev_view_in_stack" },
+
     // Open a terminal tab at current file directory
     {
         "keys": ["ctrl+alt+t"], "command": "terminus_open", "args": {

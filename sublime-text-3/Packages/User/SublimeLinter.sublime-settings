@@ -12,9 +12,8 @@
         "gcc": {
             "disable": false,
             "executable": ["gcc"],
-            "args": ["-Wall", "-Wextra", "-std=gnuc99"],
+            "args": ["-Wall", "-Wextra", "-std=gnu99"],
             "I": [
-                "/home/pierre/Documents/mini-os/src",
                 "${file_path}",
                 "${file_path}/include",
                 "${file_path}/lib",

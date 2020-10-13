@@ -76,7 +76,6 @@
 	"highlight_line": true,
 	"ignored_packages":
 	[
-		"Clang Format",
 		"JavaIME",
 		"Javatar",
 		"ocp-indent",
