@@ -94,6 +94,7 @@ setopt histignoredups
 
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
+export TORBROWSER_PKGLANG=fr-FR
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
