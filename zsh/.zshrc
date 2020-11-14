@@ -128,7 +128,6 @@ alias find=fd
 alias grep=rg
 alias ls="exa -h -g"
 alias tree="exa --tree -h"
-alias zathura="zathura --fork"
 alias git="EDITOR=vim git"
 alias gs="git status"
 alias gcam="git commit -am"
@@ -224,6 +223,10 @@ fzf_kill() {
 
 }
 
+zathura() {
+    /bin/zathura --fork $@ >/dev/null 2>&1
+}
+
 # some variables to personnalize plugins
 export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -236,7 +239,6 @@ alias fkill='fzf_kill'
 alias fge='fzf_grep_edit'
 alias ffe='fzf_find_edit'
 alias fcd='fzf_change_directory'
-
 
 # ocaml
 export OCAMLRUNPARAM="b1"
