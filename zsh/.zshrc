@@ -128,6 +128,7 @@ alias find=fd
 alias grep=rg
 alias ls="exa -h -g"
 alias tree="exa --tree -h"
+alias trizen="EDITOR=\"subl -w\" trizen"
 alias git="EDITOR=vim git"
 alias gs="git status"
 alias gcam="git commit -am"

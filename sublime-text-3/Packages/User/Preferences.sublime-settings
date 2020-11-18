@@ -23,7 +23,8 @@
 		"Debian",
 		"Unix",
 		"microcontroleur",
-		"microcontroller"
+		"microcontroller",
+		"Décryption"
 	],
 	"always_show_minimap_viewport": false,
 	"auto_complete_cycle": true,
@@ -91,7 +92,7 @@
 	[
 		".*"
 	],
-	"font_size": 13,
+	"font_size": 14,
 	"hide_minimap": true,
 	"highlight_line": true,
 	"ignored_packages":
