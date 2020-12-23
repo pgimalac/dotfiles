@@ -42,6 +42,9 @@
         },
         "jshint": {
             "args": ["--config", "/home/pierre/.config/.jshintrc"]
+        },
+        "javac": {
+            "args": ["-Xlint:-serial"]
         }
     }
 }

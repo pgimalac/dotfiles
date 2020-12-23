@@ -1,7 +1,6 @@
 #!/bin/zsh
 
-# If you come from bash you might have to change your $PATH.
-export PATH=$PATH:$HOME/.opam/default/bin
+export PATH=$PATH:/opt/comelec/bin:$HOME/.opam/default/bin
 
 fpath=($fpath $HOME/.rustcompl/_rustup)
 
