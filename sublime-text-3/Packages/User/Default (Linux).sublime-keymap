@@ -34,7 +34,7 @@
 
     { "keys": ["f12"], "command": "reindent", "args": {"single_line": false} },
 
-    { "keys": ["alt+d"], "command": "goto_documentation" },
+    // { "keys": ["alt+d"], "command": "goto_documentation" },
 
     { "keys": ["ctrl+alt+d"], "command": "selection_fields" },
 
@@ -202,4 +202,8 @@
     { "keys": ["ctrl+k", "ctrl+ç"], "command": "fold_by_level", "args": {"level": 9} },
     { "keys": ["ctrl+k", "ctrl+à"], "command": "unfold_all" },
     { "keys": ["shift+control+alt+c"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+
+    { "keys": ["ctrl+shift+m"], "command": "expand_selection", "args": {"to": "brackets"} },
+    { "keys": ["alt+d"], "command": "dash_doc"}
 ]
+

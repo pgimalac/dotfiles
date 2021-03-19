@@ -62,7 +62,8 @@ confidence=
 # --disable=W".
 #C0111 = missing module/function doc-string
 #C0103 = variable name not in snake case format
-disable=C0111,C0103
+#W0621 = redefining variable name from outer scope
+disable=C0111,C0103,W0621
 
 # Enable the message, report, category or checker with the given id(s). You can
 # either give multiple identifier separated by comma (,) or put this option

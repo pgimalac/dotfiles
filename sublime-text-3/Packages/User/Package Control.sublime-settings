@@ -13,6 +13,8 @@
 		"Character Table",
 		"Clang Format",
 		"Colorsublime",
+		"DashDoc",
+		"Dockerfile Syntax Highlighting",
 		"EclipseJavaFormatter",
 		"ExpandRegion",
 		"FileCommands",
@@ -71,6 +73,7 @@
 		"Terminal",
 		"Terminus",
 		"TeXPreview",
+		"TOML",
 		"Vuejs Complete Package",
 		"WordCount",
 		"Wrap Plus"
