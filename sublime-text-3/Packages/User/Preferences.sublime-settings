@@ -31,7 +31,8 @@
 		"Télécom",
 		"internship",
 		"phishing",
-		"salt"
+		"salt",
+		"theater"
 	],
 	"always_show_minimap_viewport": false,
 	"auto_complete_cycle": true,
@@ -59,7 +60,7 @@
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Monokai Extended/Monokai Extended Bright.tmTheme",
 	"detect_indentation": true,
-	"dictionary": "Packages/Language - Spanish/es_ES.dic",
+	"dictionary": "Packages/Language - French/French.dic",
 	"dpi_scale": 1.0,
 	"draw_minimap": false,
 	"draw_minimap_border": false,
@@ -99,7 +100,7 @@
 	[
 		".*"
 	],
-	"font_size": 15,
+	"font_size": 13,
 	"hide_minimap": true,
 	"highlight_line": true,
 	"ignored_packages":

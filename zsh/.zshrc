@@ -141,8 +141,8 @@ alias h=history
 alias tmp="cd /tmp"
 alias sl=ls
 alias ssh="TERM=xterm ssh"
-alias music="vlc $HOME/Nextcloud/Musique/other/* --random > /dev/null 2>&1 &!"
-alias classic="vlc $HOME/Nextcloud/Musique/classic/* --random > /dev/null 2>&1 &!"
+alias music="nohup vlc $HOME/Nextcloud/Musique/other/* --random > /dev/null 2>&1 &"
+alias classic="nohup vlc $HOME/Nextcloud/Musique/classic/* --random > /dev/null 2>&1 &"
 alias cpg++="g++ -g -O2 -Wall -Wextra -std=gnu++17"
 
 # some nice functions
