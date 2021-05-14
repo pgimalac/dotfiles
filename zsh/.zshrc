@@ -2,12 +2,12 @@
 
 export PATH=$PATH:/opt/comelec/bin:$HOME/.opam/default/bin
 
-fpath=($fpath $HOME/.rustcompl/_rustup)
-
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pierre/.oh-my-zsh"
 # export ZSH="/home/pierre/Documents/ohmyzsh"
 # export ZSH="/tmp/test/ohmyzsh"
+
+fpath=($fpath $ZSH/custom/plugins/cpt $HOME/.rustcompl/_rustup)
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -143,7 +143,8 @@ alias sl=ls
 alias ssh="TERM=xterm ssh"
 alias music="nohup vlc $HOME/Nextcloud/Musique/other/* --random > /dev/null 2>&1 &"
 alias classic="nohup vlc $HOME/Nextcloud/Musique/classic/* --random > /dev/null 2>&1 &"
-alias cpg++="g++ -g -O2 -Wall -Wextra -std=gnu++17"
+alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -Wl,--stack=268435456 -O2 -std=c++17"
+alias dd="ddi"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }

@@ -107,10 +107,12 @@
 	[
 		"EclipseJavaFormatter",
 		"FileCommands",
+		"Gofmt",
 		"JavaIME",
 		"Javatar",
 		"LaTeXYZ",
 		"ocp-indent",
+		"OpenCL",
 		"Rust",
 		"SublimeHaskell",
 		"SublimeLinter-clang",
