@@ -143,7 +143,7 @@ alias sl=ls
 alias ssh="TERM=xterm ssh"
 alias music="nohup vlc $HOME/Nextcloud/Musique/other/* --random > /dev/null 2>&1 &"
 alias classic="nohup vlc $HOME/Nextcloud/Musique/classic/* --random > /dev/null 2>&1 &"
-alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -Wl,--stack=268435456 -O2 -std=c++17"
+alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 alias dd="ddi"
 
 # some nice functions
@@ -236,7 +236,6 @@ export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 bindkey '^ ' autosuggest-accept
-
 
 # some fzf aliases
 alias fkill='fzf_kill'

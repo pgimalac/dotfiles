@@ -196,8 +196,8 @@ format-padding = 1
 tail = true
 interval = 20
 format-margin = ${margin.for-modules}
-click-left = termite -e "trizen -Sryu" &
-click-right = termite -e "trizen -Sayu" &
+click-left = alacritty -e trizen -Sryu &
+click-right = alacritty -e trizen -Sayu &
 
 [module/xbacklight]
 type = internal/xbacklight

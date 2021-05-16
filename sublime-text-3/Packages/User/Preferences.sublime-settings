@@ -118,8 +118,7 @@
 		"SublimeLinter-clang",
 		"SublimeLinter-jshint",
 		"Terminal",
-		"Vintage",
-		"WordCount"
+		"Vintage"
 	],
 	"ignored_words":
 	[

@@ -19,7 +19,7 @@ exec --no-startup-id ~/.config/.fehbg
 exec --no-startup-id compton --config ~/.config/i3/compton.conf
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec alacritty
 
 # start drofi dmenu
 bindsym $mod+Tab exec --no-startup-id rofi -show window
@@ -125,13 +125,13 @@ for_window [class="Min"] move to workspace $tag3
 # exec --no-startup-id i3-msg 'exec thunderbird'
 # exec --no-startup-id i3-msg 'exec geary'
 # exec --no-startup-id i3-msg 'workspace $tag1; exec google-chrome-stable &'
-exec i3-msg 'workspace $tag1; exec termite'
+exec i3-msg 'workspace $tag1; exec alacritty'
 exec i3-msg 'workspace $tag2; exec subl'
 exec i3-msg 'workspace $tag3; exec firefox'
 # exec i3-msg 'workspace $tag4; exec thunderbird'
 
-# exec --no-startup-id i3-msg 'workspace $tag4; exec termite -e "screen -rd weechat &"; workspace $tag2'
-# exec --no-startup-id i3-msg 'workspace $tag10; exec termite -e "glances"; workspace $tag2'
+# exec --no-startup-id i3-msg 'workspace $tag4; exec alacritty -e "screen -rd weechat &"; workspace $tag2'
+# exec --no-startup-id i3-msg 'workspace $tag10; exec alacritty -e "glances"; workspace $tag2'
 
 #colors
 # class                 border  backgr. text    indicator child_border
