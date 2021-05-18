@@ -32,6 +32,9 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
+# Bold blue directories, like exa does
+LS_COLORS="di=34;01"
+
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
@@ -125,8 +128,8 @@ alias bat="PAGER=less bat"
 alias cat="bat -pp"
 alias find=fd
 alias grep=rg
-alias ls="exa -h -g"
-alias tree="exa --tree -h"
+alias ls="exa -h -g --classify"
+alias tree="exa --tree -h --classify"
 alias trizen="EDITOR=\"subl -w\" trizen"
 alias git="EDITOR=vim git"
 alias gs="git status"
@@ -141,8 +144,8 @@ alias h=history
 alias tmp="cd /tmp"
 alias sl=ls
 alias ssh="TERM=xterm ssh"
-alias music="nohup vlc $HOME/Nextcloud/Musique/other/* --random > /dev/null 2>&1 &"
-alias classic="nohup vlc $HOME/Nextcloud/Musique/classic/* --random > /dev/null 2>&1 &"
+alias music="pdetach vlc $HOME/Nextcloud/Musique/other/* --random"
+alias classic="pdetach vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 alias dd="ddi"
 
