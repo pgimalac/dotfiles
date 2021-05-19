@@ -10,9 +10,10 @@ int main(int, char *argv[]) {
     }
 
     if (pid == 0) {
-        execlp("notify-send", "-u", "normal", "password needed", NULL);
+        execlp("notify-send", "-u normal", "password needed", NULL);
         perror("execlp");
     } else {
+        return 0;
         argv[0] = "sudo";
         execvp(argv[0], argv);
         perror("execvp");

@@ -128,9 +128,9 @@ alias bat="PAGER=less bat"
 alias cat="bat -pp"
 alias find=fd
 alias grep=rg
-alias ls="exa -h -g --classify"
-alias tree="exa --tree -h --classify"
-alias trizen="EDITOR=\"subl -w\" trizen"
+alias ls="exa -h -g --classify --icons"
+alias tree="exa --tree -h --classify --icons"
+alias paru="EDITOR=\"subl -w\" paru"
 alias git="EDITOR=vim git"
 alias gs="git status"
 alias gcam="git commit -am"

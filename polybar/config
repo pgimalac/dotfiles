@@ -196,8 +196,8 @@ format-padding = 1
 tail = true
 interval = 20
 format-margin = ${margin.for-modules}
-click-left = alacritty -e trizen -Sryu &
-click-right = alacritty -e trizen -Sayu &
+click-left = alacritty -e sudo pacman -Syu &
+click-right = alacritty -e paru -Sayu &
 
 [module/xbacklight]
 type = internal/xbacklight
