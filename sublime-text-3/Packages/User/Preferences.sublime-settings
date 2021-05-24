@@ -41,19 +41,19 @@
 	[
 		{
 			"characters": ".",
-			"selector": "source.rust"
+			"selector": "source.rust",
 		},
 		{
 			"characters": ":",
-			"selector": "source.rust"
+			"selector": "source.rust",
 		},
 		{
 			"characters": "(",
-			"selector": "source.rust"
+			"selector": "source.rust",
 		},
 		{
 			"characters": "\\",
-			"selector": "text.tex.latex"
+			"selector": "text.tex.latex",
 		}
 	],
 	"bold_folder_labels": true,
@@ -118,7 +118,7 @@
 		"SublimeLinter-clang",
 		"SublimeLinter-jshint",
 		"Terminal",
-		"Vintage"
+		"Vintage",
 	],
 	"ignored_words":
 	[
@@ -142,5 +142,5 @@
 	"theme": "Default.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
-	"word_wrap": true
+	"word_wrap": true,
 }

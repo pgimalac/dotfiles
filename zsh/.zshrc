@@ -7,7 +7,7 @@ export ZSH="/home/pierre/.oh-my-zsh"
 # export ZSH="/home/pierre/Documents/ohmyzsh"
 # export ZSH="/tmp/test/ohmyzsh"
 
-fpath=($fpath $ZSH/custom/plugins/cpt $HOME/.rustcompl/_rustup)
+fpath=($fpath $ZSH/custom/plugins/cpt $HOME/.zfunc)
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -66,8 +66,8 @@ COMPLETION_WAITING_DOTS="true"
 if [ -z "$plugins" ]; then
     plugins=(
         git
-        git-extras
-        autojump
+        # git-extras
+        # autojump
         compleat
         extract
         # web-search
@@ -76,10 +76,9 @@ if [ -z "$plugins" ]; then
         # safe-paste
     )
 fi
+
 # safe-paste
-
 # faster paste (does not call highlight on each character)
-
 # but coloration problems due to zsh_autosuggestions
 # and weirdly when typing something and going up in the history it prompts
 # every commands, not just the ones starting with what you type
@@ -97,12 +96,16 @@ setopt histignoredups
 # You may need to manually set your language environment
 export LANG=fr_FR.UTF-8
 export TORBROWSER_PKGLANG=fr-FR
+
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
-    export EDITOR='subl'
-fi
+export EDITOR=vim
+export MOST_EDITOR="vim +%d %s"
+
+# if [[ -n $SSH_CONNECTION ]]; then
+#     export EDITOR='vim'
+# else
+#     export EDITOR='subl'
+# fi
 
 export ARCHFLAGS="-arch x86_64"
 
@@ -110,11 +113,15 @@ export ARCHFLAGS="-arch x86_64"
 export MOST_TERMCAP_mb=$'\e[01;31m'       # begin blinking
 export MOST_TERMCAP_md=$'\e[01;38;5;74m'  # begin bold
 export MOST_TERMCAP_me=$'\e[0m'           # end mode
-export MOST_TERMCAP_se=$'\e[0m'           # end standout-mode
 export MOST_TERMCAP_so=$'\e[38;5;246m'    # begin standout-mode - info box
-export MOST_TERMCAP_ue=$'\e[0m'           # end underline
+export MOST_TERMCAP_se=$'\e[0m'           # end standout-mode
 export MOST_TERMCAP_us=$'\e[04;38;5;146m' # begin underline
+export MOST_TERMCAP_ue=$'\e[0m'           # end underline
 export PAGER="most"
+
+# From https://github.com/sharkdp/bat :
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+# It might also be necessary to set MANROFFOPT="-c" if you experience formatting problems.
 
 # fzf variables
 export FZF_DEFAULT_COMMAND='fd --type f --color=never'
@@ -130,7 +137,7 @@ alias find=fd
 alias grep=rg
 alias ls="exa -h -g --classify --icons"
 alias tree="exa --tree -h --classify --icons"
-alias paru="EDITOR=\"subl -w\" paru"
+alias paru="EDITOR=vim MAKEFLAGS=j8 paru"
 alias git="EDITOR=vim git"
 alias gs="git status"
 alias gcam="git commit -am"
@@ -148,6 +155,7 @@ alias music="pdetach vlc $HOME/Nextcloud/Musique/other/* --random"
 alias classic="pdetach vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 alias dd="ddi"
+alias open="xdg-open"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }
