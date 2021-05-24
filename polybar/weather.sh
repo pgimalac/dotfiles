@@ -46,9 +46,8 @@ if [ -z "$CITY" ]; then
     CITY="Paris, FR"
 fi
 
-if [ "$(ping mozilla.com -c 1 2> /dev/null)" ]; then
-    location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
-
+location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
+if [ "$?" -eq "0" ]; then
     if [ -n "$location" ]; then
         location_lat="$(echo "$location" | jq '.location.lat')"
         location_lon="$(echo "$location" | jq '.location.lng')"
@@ -56,15 +55,15 @@ if [ "$(ping mozilla.com -c 1 2> /dev/null)" ]; then
         current=$(curl -sf "$API/weather?appid=$KEY&lat=$location_lat&lon=$location_lon&units=$UNITS")
         forecast=$(curl -sf "$API/forecast?appid=$KEY&lat=$location_lat&lon=$location_lon&units=$UNITS&cnt=1")
     fi
-else
-    if [ "$CITY" -eq "$CITY" ] 2>/dev/null; then
-        CITY_PARAM="id=$CITY"
-    else
-        CITY_PARAM="q=$CITY"
-    fi
+# else
+    # if [ "$CITY" -eq "$CITY" ] 2>/dev/null; then
+    #     CITY_PARAM="id=$CITY"
+    # else
+    #     CITY_PARAM="q=$CITY"
+    # fi
 
-    current=$(curl -sf "$API/weather?appid=$KEY&$CITY_PARAM&units=$UNITS")
-    forecast=$(curl -sf "$API/forecast?appid=$KEY&$CITY_PARAM&units=$UNITS&cnt=1")
+    # current=$(curl -sf "$API/weather?appid=$KEY&$CITY_PARAM&units=$UNITS")
+    # forecast=$(curl -sf "$API/forecast?appid=$KEY&$CITY_PARAM&units=$UNITS&cnt=1")
 fi
 
 if [ -n "$current" ] && [ -n "$forecast" ]; then

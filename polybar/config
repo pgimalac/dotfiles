@@ -120,7 +120,7 @@ label-occupied-foreground = ${colors.fg}
 [module/weather]
 type = custom/script
 exec = ~/.config/polybar/weather.sh
-exec-if = ping mozilla.com -c 1 2> /dev/null
+exec-if = ping api.openweathermap.org -c 1 2> /dev/null
 label-underline = ${colors.main-color}
 format-padding = 1
 interval = 300
@@ -194,7 +194,7 @@ exec = bash ~/.config/polybar/checkupdates.sh
 format-underline = ${colors.main-color}
 format-padding = 1
 tail = true
-interval = 20
+interval = 60
 format-margin = ${margin.for-modules}
 click-left = alacritty -e sudo pacman -Syu &
 click-right = alacritty -e paru -Sayu &
@@ -329,7 +329,7 @@ ramp-coreload-font = 3
 
 [module/memory]
 type = internal/memory
-interval = 0.1
+interval = 1
 format-prefix = " "
 format-overline = ${colors.main-color}
 format-padding = 1
