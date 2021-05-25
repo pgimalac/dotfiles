@@ -123,7 +123,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type d . --color=never'
 
 # my aliases
-alias sed="ambr"
 alias du="dust"
 alias cat="bat -pp"
 alias find=fd
