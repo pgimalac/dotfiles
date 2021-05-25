@@ -47,7 +47,7 @@ cursor-click = pointer
 
 ;====Module settings+======================================
 ; other modules: explorer google github reddit facebook youtube
-modules-left = workspaces weather
+modules-left = workspaces
 modules-center = date
 modules-right = updates xbacklight volume battery powermenu
 ;==========================================================
