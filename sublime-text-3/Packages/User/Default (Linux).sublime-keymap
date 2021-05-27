@@ -204,6 +204,6 @@
     { "keys": ["shift+control+alt+c"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
 
     { "keys": ["ctrl+shift+m"], "command": "expand_selection", "args": {"to": "brackets"} },
-    { "keys": ["alt+d"], "command": "dash_doc"}
+    { "keys": ["alt+d"], "command": "dash_doc"},
 ]
 
