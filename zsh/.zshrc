@@ -94,8 +94,23 @@ setopt extended_glob
 setopt histignoredups
 
 # You may need to manually set your language environment
-export LANG=fr_FR.UTF-8
-export TORBROWSER_PKGLANG=fr-FR
+export LANG="fr_FR.UTF-8"
+export TORBROWSER_PKGLANG="fr-FR"
+
+export ALL="$LANG"
+export LANGUAGE="$LANG"
+export LC_ADDRESS="POSIX"
+export LC_COLLATE="POSIX"
+export LC_CTYPE="$LANG"
+export LC_IDENTIFICATION="$LANG"
+export LC_MEASUREMENT="$LANG"
+export LC_MESSAGE="POSIX"
+export LC_MONETARY="$LANG"
+export LC_NAME="POSIX"
+export LC_NUMERIC="$LANG"
+export LC_PAPER="$LANG"
+export LC_TELEPHONE="$LANG"
+export LC_TIME="$LANG"
 
 # Preferred editor for local and remote sessions
 export EDITOR=vim
