@@ -4,8 +4,6 @@ export PATH=$PATH:/opt/comelec/bin:$HOME/.opam/default/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pierre/.oh-my-zsh"
-# export ZSH="/home/pierre/Documents/ohmyzsh"
-# export ZSH="/tmp/test/ohmyzsh"
 
 fpath=($HOME/.zfunc $fpath)
 
@@ -65,12 +63,11 @@ COMPLETION_WAITING_DOTS="true"
 
 if [ -z "$plugins" ]; then
     plugins=(
-        git
-        # git-extras
+        copydir
+        copyfile
         # autojump
         compleat
         extract
-        # web-search
         zsh-autosuggestions
         zsh-syntax-highlighting
         # safe-paste
@@ -89,9 +86,17 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # enables ** recursive patterns
-setopt extended_glob
+setopt extended_glob glob_star_short
+# interpret ?@*+! after a parenthesis
+setopt ksh_glob
+# deletes the glob pattern when it has no match
+# setopt null_glob
+# prints files starting with a dot when globbing (including file completion)
+# setopt glob_dots
 # no duplicate consecutive commands in history
 setopt histignoredups
+# short versions of loops
+setopt short_loops
 
 # You may need to manually set your language environment
 export LANG="fr_FR.UTF-8"
@@ -143,9 +148,10 @@ alias cat="bat -pp"
 alias find=fd
 alias grep=rg
 alias ls="exa -h -g --classify --icons"
+alias la='ls -a' # override alias from $(OH_MY_ZSH)/lib/directories.zsh
 alias tree="exa --tree -h --classify --icons"
 alias paru="MAKEFLAGS=j8 paru"
-alias git="git"
+alias ga="git add"
 alias gs="git status"
 alias gcam="git commit -am"
 alias gcm="git commit -m"
@@ -153,6 +159,7 @@ alias gc="git checkout"
 alias gpush="git push"
 alias gpull="git pull"
 alias gp="git pull && git push"
+alias gd="git diff"
 alias zshrc='subl ~/.zshrc'
 alias h=history
 alias tmp="cd /tmp"
@@ -165,7 +172,7 @@ alias dd="ddi"
 alias open="xdg-open"
 alias detach=pdetach
 alias reload="exec zsh"
-alias restart=restart
+alias restart="reload"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }
@@ -273,3 +280,13 @@ export OCAMLRUNPARAM="b1"
 # => manual patch in the completion script
 # might need to update the script if bat is updated...
 # compdef '' bat
+
+# copied from zsh-reload module
+# compiles zsh config files for faster start
+local cache="$ZSH_CACHE_DIR"
+autoload -U compinit zrecompile
+compinit -i -d "$cache/zcomp-$HOST"
+
+for f in ${ZDOTDIR:-~}/.zshrc "$cache/zcomp-$HOST"; do
+    zrecompile -p $f >/dev/null && command rm -f $f.zwc.old
+done

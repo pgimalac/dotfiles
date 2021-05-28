@@ -1,7 +1,7 @@
 CC = gcc
 CFLAGS = -O2
 
-SRCS = please
+SRCS = please ua
 
 all: $(SRCS)
 
