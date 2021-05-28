@@ -173,6 +173,8 @@ alias open="xdg-open"
 alias detach=pdetach
 alias reload="exec zsh"
 alias restart="reload"
+alias copy="xclip -i -selection clipboard"
+alias paste="xclip -o -selection clipboard; echo"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }
