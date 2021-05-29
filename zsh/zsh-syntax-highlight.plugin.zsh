@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 # from https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
+# modified to have syntax highlight on the pasted text
 
 pasteinit() {
     OLD_SELF_INSERT=${${(s.:.)widgets[self-insert]}[2,3]}
@@ -9,6 +10,7 @@ pasteinit() {
 
 pastefinish() {
     zle -N self-insert $OLD_SELF_INSERT
+    _zsh_highlight
 }
 
 zstyle :bracketed-paste-magic paste-init pasteinit

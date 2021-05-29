@@ -54,6 +54,7 @@ if [ -z "$plugins" ]; then
         extract
         fancy-ctrl-z
         fzf # custom
+        quick-command-change # custom
         reload # custom
         safe-paste
         transfer # custom
@@ -129,6 +130,9 @@ export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export ZSH_AUTOSUGGEST_USE_ASYNC=true
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
 bindkey '^ ' autosuggest-accept
+
+# disables highlighting pasted text
+zle_highlight+=(paste:none)
 
 # ocaml
 export OCAMLRUNPARAM="b1"
