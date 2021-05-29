@@ -4,6 +4,8 @@ export PATH=$PATH:/opt/comelec/bin:$HOME/.opam/default/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="/home/pierre/.oh-my-zsh"
+export DOTFILES="$HOME/.dotfiles"
+export ZSHDOTFILES="$DOTFILES/zsh"
 
 fpath=($HOME/.zfunc $fpath)
 
@@ -63,12 +65,11 @@ COMPLETION_WAITING_DOTS="true"
 
 if [ -z "$plugins" ]; then
     plugins=(
-        # autojump
         compleat
         copydir
         copyfile
-        dirhistory
         extract
+        fancy-ctrl-z
         # safe-paste
         zsh-autosuggestions
         zsh-syntax-highlighting
@@ -85,6 +86,7 @@ fi
 # but a relatively similar one appeared then
 
 source $ZSH/oh-my-zsh.sh
+source $ZSHDOTFILES/dirhistory.plugin.zsh
 
 # enables ** recursive patterns
 setopt extended_glob glob_star_short
@@ -173,9 +175,9 @@ alias dd="ddi"
 alias open="xdg-open"
 alias detach=pdetach
 alias reload="exec zsh"
-alias restart="reload"
 alias copy="xclip -i -selection clipboard"
 alias paste="xclip -o -selection clipboard; echo"
+alias zathura="pdetach zathura --fork"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }
@@ -186,7 +188,7 @@ fzf_change_directory() {
     directory=$(
         fd --type d | \
         fzf --query="$1" --no-multi --select-1 --exit-0 \
-            --preview 'tree -C {} | head -100'
+            --preview 'exa --tree -h --classify --icons {} | head -100'
     )
     if [[ -n $directory ]]; then
         cd "$directory"
@@ -223,14 +225,11 @@ fzf_grep_edit(){
 }
 
 fzf_kill() {
-    local user_col=1 pid_col=2 ppid_col=3 lines
+    local user_col=1 pid_col=2 ppid_col=3
 
-    lines=$(
-        ps axo user,pid,ppid,%cpu,%mem,state,start,cmd --sort -pid --no-header |
-        fzf --multi -e |
-        tr -s '[:blank:]'
-    )
-
+    ps axo user,pid,ppid,%cpu,%mem,state,start,cmd --sort -pid --no-header |
+    fzf --multi -e |
+    tr -s '[:blank:]' |
     while IFS= read -r line; do
         if [[ -z "$line" ]]; then
             break
@@ -253,12 +252,8 @@ fzf_kill() {
             echo "sudo kill -KILL $pid"
             sudo kill -KILL "$pid"
         fi
-    done <<< "$lines"
+    done
 
-}
-
-zathura() {
-    /bin/zathura --fork $@ >/dev/null 2>&1
 }
 
 # some variables to personnalize plugins
@@ -284,17 +279,6 @@ export OCAMLRUNPARAM="b1"
 # might need to update the script if bat is updated...
 # compdef '' bat
 
-# copied from zsh-reload module
-# compiles zsh config files for faster start
-local cache="$ZSH_CACHE_DIR"
-autoload -U compinit zrecompile
-compinit -i -d "$cache/zcomp-$HOST"
-
-for f in ${ZDOTDIR:-~}/.zshrc "$cache/zcomp-$HOST"; do
-    zrecompile -p $f >/dev/null && command rm -f $f.zwc.old
-done
-
-
 # My version of copybuffer
 # Mostly stolen from https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copybuffer
 # copy the active line from the command line buffer
@@ -316,3 +300,26 @@ zle -N copybuffer
 bindkey -r "^X^B" "^X^E" "^X^F" "^X^J" "^X^K" "^X^N" "^X^O" "^X^R" "^X^U" "^X^V" "^X^X" "^X*" "^X=" "^X?" "^XC" "^XG" "^Xa" "^Xc" "^Xd" "^Xe" "^Xg" "^Xh" "^Xm" "^Xn" "^Xr" "^Xs" "^Xt" "^Xu" "^X~"
 
 bindkey "^X" copybuffer
+
+# some more bindings
+
+bindkey "^B" history-incremental-search-backward
+bindkey "^F" history-incremental-search-forward
+
+function _reload {
+    BUFFER="reload"
+    zle accept-line -w
+}
+
+zle -N _reload
+bindkey "^R" _reload
+
+# copied from zsh-reload module
+# compiles zsh config files for faster start
+local cache="$ZSH_CACHE_DIR"
+autoload -U compinit zrecompile
+compinit -i -d "$cache/zcomp-$HOST"
+
+for f in ${ZDOTDIR:-~}/.zshrc "$cache/zcomp-$HOST"; do
+    zrecompile -p $f >/dev/null && command rm -f $f.zwc.old
+done
