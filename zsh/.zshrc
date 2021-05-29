@@ -1,12 +1,14 @@
 #!/bin/zsh
 
-# Path to your oh-my-zsh installation.
-export ZSH="/home/pierre/.oh-my-zsh"
-export DOTFILES="$HOME/.dotfiles"
-export ZSHDOTFILES="$DOTFILES/zsh"
-
 export PATH=$PATH:/opt/comelec/bin:$HOME/.opam/default/bin
+
+# manual patch in the completion script to fix bat completion
+# put zfunc at the start of fpath to override the official completion file
+# might need to update the script if bat is updated...
 export fpath=($HOME/.zfunc $fpath)
+
+# Path to your oh-my-zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -28,7 +30,7 @@ HYPHEN_INSENSITIVE="true"
 # export UPDATE_ZSH_DAYS=13
 
 # Bold blue directories, like exa does
-LS_COLORS="di=34;01"
+export LS_COLORS="di=34;01"
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
@@ -53,36 +55,38 @@ if [ -z "$plugins" ]; then
         fancy-ctrl-z
         fzf # custom
         reload # custom
-        # safe-paste
+        safe-paste
         transfer # custom
         universalarchive # custom
         zsh-autosuggestions
-        zsh-syntax-highlighting
+        zsh-syntax-highlighting # kind of custom
     )
 fi
-
-# merged a pull request on my fork to cancel that last bug
-# but a relatively similar one appeared then
 
 source $ZSH/oh-my-zsh.sh
 
 # enables ** recursive patterns
 setopt extended_glob glob_star_short
+
 # interpret ?@*+! after a parenthesis
 setopt ksh_glob
+
 # deletes the glob pattern when it has no match
+# but "cat *.c" => "cat" if no c file, which has a very different behavior
 # setopt null_glob
+
 # prints files starting with a dot when globbing (including file completion)
+# but also shows files starting with a dot when tabbing
 # setopt glob_dots
+
 # no duplicate consecutive commands in history
 setopt histignoredups
+
 # short versions of loops
 setopt short_loops
 
-# You may need to manually set your language environment
+# langage environment variables
 export LANG="fr_FR.UTF-8"
-export TORBROWSER_PKGLANG="fr-FR"
-
 export ALL="$LANG"
 export LANGUAGE="$LANG"
 export LC_ADDRESS="POSIX"
@@ -97,6 +101,7 @@ export LC_NUMERIC="$LANG"
 export LC_PAPER="$LANG"
 export LC_TELEPHONE="$LANG"
 export LC_TIME="$LANG"
+export TORBROWSER_PKGLANG="fr-FR"
 
 # Preferred editor for local and remote sessions
 export EDITOR=vim
@@ -118,15 +123,31 @@ export BAT_PAGER="less -RF"
 # we want to always use fullscreen, even for small man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p --pager=\"$PAGER\"'"
 
+# some variables to personnalize plugins
+export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_USE_ASYNC=true
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
+bindkey '^ ' autosuggest-accept
+
+# ocaml
+export OCAMLRUNPARAM="b1"
+
 # my aliases
+# override existing applications
 alias du="dust"
 alias cat="bat -pp"
 alias find=fd
 alias grep=rg
 alias ls="exa -h -g --classify --icons"
-alias la='ls -a' # override alias from $(OH_MY_ZSH)/lib/directories.zsh
 alias tree="exa --tree -h --classify --icons"
 alias paru="MAKEFLAGS=j8 paru"
+alias ssh="TERM=xterm ssh"
+alias dd="ddi"
+alias zathura="pdetach zathura --fork"
+
+# short aliases
+alias la='ls -a' # override alias from $(OH_MY_ZSH)/lib/directories.zsh
 alias ga="git add"
 alias gs="git status"
 alias gcam="git commit -am"
@@ -140,37 +161,19 @@ alias zshrc='subl ~/.zshrc'
 alias h=history
 alias tmp="cd /tmp"
 alias sl=ls
-alias ssh="TERM=xterm ssh"
+alias open="xdg-open"
+alias detach=pdetach
+
+# new functions
 alias music="pdetach vlc $HOME/Nextcloud/Musique/other/* --random"
 alias classic="pdetach vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
-alias dd="ddi"
-alias open="xdg-open"
-alias detach=pdetach
 alias copy="xclip -i -selection clipboard"
 alias paste="xclip -o -selection clipboard; echo"
-alias zathura="pdetach zathura --fork"
 
 # some nice functions
 mkcd () { mkdir "$@" && cd ${@:$#} }
 lcd () { cd "$1" && ls ${@:2:$#} }
-
-# some variables to personnalize plugins
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export ZSH_AUTOSUGGEST_USE_ASYNC=true
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
-bindkey '^ ' autosuggest-accept
-
-# ocaml
-export OCAMLRUNPARAM="b1"
-# opam configuration
-# test -r /home/pierre/.opam/opam-init/init.zsh && . /home/pierre/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# to remove a bug with bat completion
-# => manual patch in the completion script
-# might need to update the script if bat is updated...
-# compdef '' bat
 
 # some more bindings
 
