@@ -10,6 +10,9 @@ export fpath=($HOME/.zfunc $fpath)
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
+export DOTFILES="$HOME/.dotfiles"
+export CONFIG="$HOME/.config"
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
@@ -149,6 +152,8 @@ alias paru="MAKEFLAGS=j8 paru"
 alias ssh="TERM=xterm ssh"
 alias dd="ddi"
 alias zathura="pdetach zathura --fork"
+alias vlc="pdetach vlc"
+alias libreoffice="pdetach libreoffice"
 
 # short aliases
 alias la='ls -a' # override alias from $(OH_MY_ZSH)/lib/directories.zsh
@@ -164,13 +169,15 @@ alias gd="git diff"
 alias zshrc='subl ~/.zshrc'
 alias h=history
 alias tmp="cd /tmp"
+alias dotfiles="cd $DOTFILES"
+alias config="cd $CONFIG"
 alias sl=ls
 alias open="xdg-open"
 alias detach=pdetach
 
 # new functions
-alias music="pdetach vlc $HOME/Nextcloud/Musique/other/* --random"
-alias classic="pdetach vlc $HOME/Nextcloud/Musique/classic/* --random"
+alias music="vlc $HOME/Nextcloud/Musique/other/* --random"
+alias classic="vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 alias copy="xclip -i -selection clipboard"
 alias paste="xclip -o -selection clipboard; echo"
