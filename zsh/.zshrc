@@ -19,6 +19,7 @@ export CONFIG="$HOME/.config"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pierre"
 
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -151,9 +152,10 @@ alias tree="exa --tree -h --classify --icons"
 alias paru="MAKEFLAGS=j8 paru"
 alias ssh="TERM=xterm ssh"
 alias dd="ddi"
-alias zathura="pdetach zathura --fork"
+alias zathura="pdetach zathura"
 alias vlc="pdetach vlc"
 alias libreoffice="pdetach libreoffice"
+alias feh="pdetach feh"
 
 # short aliases
 alias la='ls -a' # override alias from $(OH_MY_ZSH)/lib/directories.zsh
@@ -182,9 +184,36 @@ alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 alias copy="xclip -i -selection clipboard"
 alias paste="xclip -o -selection clipboard; echo"
 
-# some nice functions
-mkcd () { mkdir "$@" && cd ${@:$#} }
 lcd () { cd "$1" && ls ${@:2:$#} }
+pwd () {
+    if [ "$#@" -eq "0" ]; then
+        /bin/pwd
+    else
+        local D
+        D=$(/bin/pwd)
+        for i in "$@"; do
+            echo "$D/$i"
+        done
+    fi
+}
+
+temp () {
+    local D
+    if [ "$#@" -eq "0" ]; then
+        D=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)
+    elif [ "$#@" -eq "1" ]; then
+        D="$1"
+    else
+        echo "At most one argument expected." 1&>2
+        return 1;
+    fi
+    mkdir "/tmp/$D"
+    cd "/tmp/$D"
+}
+
+# TODO take a look at that
+# autoload zmv
+# alias zmv='noglob zmv -W'
 
 # some more bindings
 
