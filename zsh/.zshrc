@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-export PATH=$PATH:/opt/comelec/bin:$HOME/.opam/default/bin
+export PATH=$PATH:/opt/comelec/bin:$HOME/.cargo/bin:$HOME/.opam/default/bin
 
 # manual patch in the completion script to fix bat completion
 # put zfunc at the start of fpath to override the official completion file
@@ -92,7 +92,7 @@ setopt short_loops
 
 # langage environment variables
 export LANG="fr_FR.UTF-8"
-export ALL="$LANG"
+export LC_ALL="$LANG"
 export LANGUAGE="$LANG"
 export LC_ADDRESS="POSIX"
 export LC_COLLATE="POSIX"
@@ -105,8 +105,10 @@ export LC_NAME="POSIX"
 export LC_NUMERIC="$LANG"
 export LC_PAPER="$LANG"
 export LC_TELEPHONE="$LANG"
+export LC_MESSAGES="$LANG"
 export LC_TIME="$LANG"
 export TORBROWSER_PKGLANG="fr-FR"
+
 
 # Preferred editor for local and remote sessions
 export EDITOR=vim
@@ -146,16 +148,18 @@ export OCAMLRUNPARAM="b1"
 alias du="dust"
 alias cat="bat -pp"
 alias find=fd
-alias grep=rg
+alias grep="noglob rg"
+alias sed="noglob sed"
+alias awk="noglob awk"
 alias ls="exa -h -g --classify --icons"
 alias tree="exa --tree -h --classify --icons"
 alias paru="MAKEFLAGS=j8 paru"
 alias ssh="TERM=xterm ssh"
 alias dd="ddi"
-alias zathura="pdetach zathura"
-alias vlc="pdetach vlc"
-alias libreoffice="pdetach libreoffice"
-alias feh="pdetach feh"
+alias zathura="detach zathura"
+alias vlc="detach vlc"
+alias libreoffice="detach libreoffice"
+alias feh="detach feh"
 
 # short aliases
 alias la='ls -a' # override alias from $(OH_MY_ZSH)/lib/directories.zsh
@@ -187,12 +191,10 @@ alias paste="xclip -o -selection clipboard; echo"
 lcd () { cd "$1" && ls ${@:2:$#} }
 pwd () {
     if [ "$#@" -eq "0" ]; then
-        /bin/pwd
+        command pwd
     else
-        local D
-        D=$(/bin/pwd)
         for i in "$@"; do
-            echo "$D/$i"
+            realpath "$i"
         done
     fi
 }
@@ -210,6 +212,10 @@ temp () {
     mkdir "/tmp/$D"
     cd "/tmp/$D"
 }
+
+# autoload -Uz tetris
+# zle -N tetris
+# bindkey "^M" tetris
 
 # TODO take a look at that
 # autoload zmv
