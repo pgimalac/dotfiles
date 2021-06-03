@@ -5,6 +5,9 @@
 # copy the active line from the command line buffer
 # onto the system clipboard, and clear the line
 
+alias copy="xclip -i -selection clipboard"
+alias paste="xclip -o -selection clipboard; echo"
+
 copybuffer () {
     if which clipcopy &>/dev/null; then
         echo -n "$BUFFER" | clipcopy

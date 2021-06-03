@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 if [ -z "$plugins" ]; then
     plugins=(
         compleat
-        copybuffer # custom
+        copy # custom
         copydir
         copyfile
         dirhistory # custom
@@ -185,34 +185,26 @@ alias detach=pdetach
 alias music="vlc $HOME/Nextcloud/Musique/other/* --random"
 alias classic="vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
-alias copy="xclip -i -selection clipboard"
-alias paste="xclip -o -selection clipboard; echo"
 
-lcd () { cd "$1" && ls ${@:2:$#} }
-pwd () {
-    if [ "$#@" -eq "0" ]; then
-        command pwd
-    else
-        for i in "$@"; do
-            realpath "$i"
-        done
-    fi
+random() {
+    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w "${1:-16}" | head -n 1
 }
 
+lcd () { cd "$1" && ls ${@:2:$#} }
+
 temp () {
-    local D
     if [ "$#@" -eq "0" ]; then
-        D=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 16 | head -n 1)
+        until take "/tmp/$(random)"; do
+        done
     elif [ "$#@" -eq "1" ]; then
-        D="$1"
+        take "/tmp/$1"
     else
         echo "At most one argument expected." 1&>2
         return 1;
     fi
-    mkdir "/tmp/$D"
-    cd "/tmp/$D"
 }
 
+# for fun:
 # autoload -Uz tetris
 # zle -N tetris
 # bindkey "^M" tetris
