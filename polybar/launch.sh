@@ -9,5 +9,5 @@ while pgrep -u $UID -x polybar >/dev/null; do
 done
 
 # Launch bar
-detach polybar -r top 2>>/tmp/polybar_top.log 1>&2
-detach polybar -r bot 2>>/tmp/polybar_bot.log 1>&2
+pdetach polybar -r top 2>>/tmp/polybar_top.log 1>&2
+pdetach polybar -r bot 2>>/tmp/polybar_bot.log 1>&2

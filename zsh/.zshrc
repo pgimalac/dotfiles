@@ -153,7 +153,7 @@ alias sed="noglob sed"
 alias awk="noglob awk"
 alias ls="exa -h -g --classify --icons"
 alias tree="exa --tree -h --classify --icons"
-alias paru="MAKEFLAGS=j8 paru"
+# alias paru="MAKEFLAGS=j8 paru" # added MAKEFLAGS directly in /etc/makepkg.conf
 alias ssh="TERM=xterm ssh"
 alias dd="ddi"
 alias zathura="detach zathura"
