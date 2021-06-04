@@ -1,24 +1,22 @@
 #!/bin/zsh
 
-export PATH=$PATH:/opt/comelec/bin:$HOME/.cargo/bin:$HOME/.opam/default/bin
-
 # manual patch in the completion script to fix bat completion
 # put zfunc at the start of fpath to override the official completion file
 # might need to update the script if bat is updated...
 export fpath=($HOME/.zfunc $fpath)
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+ZSH="$HOME/.oh-my-zsh"
 
-export DOTFILES="$HOME/.dotfiles"
-export CONFIG="$HOME/.config"
+DOTFILES="$HOME/.dotfiles"
+CONFIG="$HOME/.config"
+NEXTCLOUD="$HOME/Nextcloud"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="pierre"
-
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,20 +49,20 @@ COMPLETION_WAITING_DOTS="true"
 if [ -z "$plugins" ]; then
     plugins=(
         compleat
-        copy # custom
-        copydir
-        copyfile
         dirhistory # custom
         extract
         fancy-ctrl-z
         fzf # custom
         quick-command-change # custom
+        random # custom
         reload # custom
-        safe-paste
+        safe-paste # custom
+        zmv # custom
         transfer # custom
         universalarchive # custom
-        zsh-autosuggestions
-        zsh-syntax-highlighting # kind of custom
+        zsh-autosuggestions # not really custom but I have a wrapper
+        zsh-syntax-highlighting # kind of custom, wrapper
+        copy # custom # has to be put at the end to remove ^X bindings
     )
 fi
 
@@ -90,26 +88,6 @@ setopt histignoredups
 # short versions of loops
 setopt short_loops
 
-# langage environment variables
-export LANG="fr_FR.UTF-8"
-export LC_ALL="$LANG"
-export LANGUAGE="$LANG"
-export LC_ADDRESS="POSIX"
-export LC_COLLATE="POSIX"
-export LC_CTYPE="$LANG"
-export LC_IDENTIFICATION="$LANG"
-export LC_MEASUREMENT="$LANG"
-export LC_MESSAGE="POSIX"
-export LC_MONETARY="$LANG"
-export LC_NAME="POSIX"
-export LC_NUMERIC="$LANG"
-export LC_PAPER="$LANG"
-export LC_TELEPHONE="$LANG"
-export LC_MESSAGES="$LANG"
-export LC_TIME="$LANG"
-export TORBROWSER_PKGLANG="fr-FR"
-
-
 # Preferred editor for local and remote sessions
 export EDITOR=vim
 
@@ -119,8 +97,6 @@ export EDITOR=vim
 #     export EDITOR='subl'
 # fi
 
-export ARCHFLAGS="-arch x86_64"
-
 # PAGER env vars
 # Use less since most does not support reading ANSI colors, and bat can color man pages
 # -R to read ANSI colors
@@ -129,19 +105,6 @@ export PAGER="less -R"
 export BAT_PAGER="less -RF"
 # we want to always use fullscreen, even for small man pages
 export MANPAGER="sh -c 'col -bx | bat -l man -p --pager=\"$PAGER\"'"
-
-# some variables to personnalize plugins
-export ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
-export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
-export ZSH_AUTOSUGGEST_USE_ASYNC=true
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555555"
-bindkey '^ ' autosuggest-accept
-
-# disables highlighting pasted text
-zle_highlight+=(paste:none)
-
-# ocaml
-export OCAMLRUNPARAM="b1"
 
 # my aliases
 # override existing applications
@@ -186,34 +149,8 @@ alias music="vlc $HOME/Nextcloud/Musique/other/* --random"
 alias classic="vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 
-random() {
-    cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w "${1:-16}" | head -n 1
-}
-
 lcd () { cd "$1" && ls ${@:2:$#} }
 
-temp () {
-    if [ "$#@" -eq "0" ]; then
-        until take "/tmp/$(random)"; do
-        done
-    elif [ "$#@" -eq "1" ]; then
-        take "/tmp/$1"
-    else
-        echo "At most one argument expected." 1&>2
-        return 1;
-    fi
-}
-
-# for fun:
-# autoload -Uz tetris
-# zle -N tetris
-# bindkey "^M" tetris
-
-# TODO take a look at that
-# autoload zmv
-# alias zmv='noglob zmv -W'
-
 # some more bindings
-
 bindkey "^B" history-incremental-search-backward
 bindkey "^F" history-incremental-search-forward

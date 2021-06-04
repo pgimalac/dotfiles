@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # mostly stolen from universalarchive plugin of oh-my-zsh
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/universalarchive
 # modified to give the name of the archive as first argument

@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # My version of copybuffer
 # Mostly stolen from https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/copybuffer
 # copy the active line from the command line buffer
@@ -16,6 +14,15 @@ copybuffer () {
         echo "clipcopy function not found. Please make sure you have Oh My Zsh installed correctly."
     fi
 }
+
+function copydir {
+    echo -n "$PWD" | clipcopy
+}
+
+function copyfile {
+    clipcopy "$1"
+}
+
 
 zle -N copybuffer
 
