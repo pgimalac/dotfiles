@@ -1,3 +1,5 @@
+#!/bin/false
+
 # mostly stolen from transfer plugin of oh-my-zsh
 # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/transfer
 # modified to copy the link in the X clipboard

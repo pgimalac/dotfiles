@@ -1,3 +1,5 @@
+#!/bin/false
+
 # some fzf variables
 export FZF_DEFAULT_COMMAND='fd --type f --color=never'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"

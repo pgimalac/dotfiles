@@ -1,3 +1,5 @@
+#!/bin/false
+
 alias reload="exec zsh"
 
 function _reload {

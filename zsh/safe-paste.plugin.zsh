@@ -1,3 +1,5 @@
+#!/bin/false
+
 # from the omz safe-paste plugin
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/safe-paste/safe-paste.plugin.zsh
 

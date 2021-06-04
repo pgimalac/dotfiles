@@ -47,7 +47,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 
 if [ -z "$plugins" ]; then
-    plugins=(
+    readonly plugins=(
         compleat
         dirhistory # custom
         extract

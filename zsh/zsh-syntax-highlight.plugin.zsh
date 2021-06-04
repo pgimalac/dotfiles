@@ -1,3 +1,5 @@
+#!/bin/false
+
 # from https://gist.github.com/magicdude4eva/2d4748f8ef3e6bf7b1591964c201c1ab
 # modified to have syntax highlight on the pasted text
 

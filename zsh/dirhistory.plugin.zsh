@@ -1,3 +1,5 @@
+#!/bin/false
+
 # From
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/plugins/dirhistory/dirhistory.plugin.zsh
 

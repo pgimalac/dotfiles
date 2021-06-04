@@ -1,3 +1,5 @@
+#!/bin/false
+
 _find_position_command_end() {
     local pos=1
     while [[ $pos -le $#BUFFER ]] && [[ "$BUFFER[$pos]" == " " ]]; do
