@@ -10,7 +10,7 @@
 # > transfer file.txt
 # > transfer directory/
 
-transfer() {
+function transfer {
     # check arguments
     if [ $# -eq 0 ]; then
         echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
@@ -33,14 +33,14 @@ transfer() {
             # tar directory and transfer
             tarfile=$( mktemp -t transferXXX.tar.gz )
             cd $(dirname $file) && tar -czf $tarfile $(basename $file)
-            curl --progress-bar --upload-file "$tarfile" "https://transfer.sh/$basefile.tar.gz" | copy && paste
+            curl --progress-bar --upload-file "$tarfile" "https://transfer.sh/$basefile.tar.gz" >&1 > >(copy) && echo
             rm -f $tarfile
         else
             # transfer file
-            curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" | copy && paste
+            curl --progress-bar --upload-file "$file" "https://transfer.sh/$basefile" >&1 > >(copy) && echo
         fi
     else
         # transfer pipe
-        curl --progress-bar --upload-file "-" "https://transfer.sh/$file" | copy && paste
+        curl --progress-bar --upload-file "-" "https://transfer.sh/$file" >&1 > >(copy) && echo
     fi
 }

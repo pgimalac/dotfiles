@@ -6,7 +6,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND='fd --type d . --color=never'
 
 # some fzf functions
-fzf_change_directory() {
+function fzf_change_directory {
     local directory
     directory=$(
         fd --type d | \
@@ -18,7 +18,7 @@ fzf_change_directory() {
     fi
 }
 
-fzf_find_edit() {
+function fzf_find_edit {
     local file
     file=$(
         fzf --query="$1" --no-multi --select-1 --exit-0 \
@@ -29,7 +29,7 @@ fzf_find_edit() {
     fi
 }
 
-fzf_grep_edit(){
+function fzf_grep_edit {
     if [[ $# == 0 ]]; then
         echo 'Error: search term was not provided.'
         return
@@ -47,7 +47,7 @@ fzf_grep_edit(){
     fi
 }
 
-fzf_kill() {
+function fzf_kill {
     local user_col=1 pid_col=2 ppid_col=3
 
     ps axo user,pid,ppid,%cpu,%mem,state,start,cmd --sort -pid --no-header |

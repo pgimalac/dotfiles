@@ -173,16 +173,16 @@ bindsym $mod+less move workspace to output right
 bindsym $mod+Shift+less move workspace to output up
 
 #assign workspace to screens
-workspace $tag1 output DP-1-1
-workspace $tag2 output eDP-1
-workspace $tag3 output eDP-1
-workspace $tag4 output eDP-1
-workspace $tag5 output eDP-1
-workspace $tag6 output eDP-1
-workspace $tag7 output eDP-1
-workspace $tag8 output eDP-1
-workspace $tag9 output eDP-1
-workspace $tag10 output eDP-1
+workspace $tag1 output DP-0
+workspace $tag2 output DP-0
+workspace $tag3 output DP-0
+workspace $tag4 output DP-0
+workspace $tag5 output DP-0
+workspace $tag6 output DP-0
+workspace $tag7 output DP-0
+workspace $tag8 output DP-0
+workspace $tag9 output DP-0
+workspace $tag10 output DP-0
 
 ###################################################################################
 

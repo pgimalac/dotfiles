@@ -1,10 +1,10 @@
 #!/bin/false
 
-random() {
+function random {
     cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w "${1:-16}" | head -n 1
 }
 
-temp () {
+function temp {
     if [ "$#@" -eq "0" ]; then
         until take "/tmp/$(random)" 2>/dev/null; do
         done

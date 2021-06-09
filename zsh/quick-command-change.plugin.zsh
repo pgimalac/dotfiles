@@ -1,6 +1,6 @@
 #!/bin/false
 
-_find_position_command_end() {
+function _find_position_command_end {
     local pos=1
     while [[ $pos -le $#BUFFER ]] && [[ "$BUFFER[$pos]" == " " ]]; do
         pos=$(($pos + 1))
@@ -13,7 +13,7 @@ _find_position_command_end() {
     echo $pos
 }
 
-_remove_command() {
+function _remove_command {
     _zsh_autosuggest_disable
     BUFFER="${BUFFER[@]:$(($(_find_position_command_end)-1))}"
     CURSOR=0
@@ -25,7 +25,7 @@ zle -N _remove_command
 # alt+a
 bindkey "^[a" _remove_command
 
-_remove_args() {
+function _remove_args {
     _zsh_autosuggest_disable
     BUFFER="${BUFFER[@]:0:$(_find_position_command_end)}"
     CURSOR=$#BUFFER

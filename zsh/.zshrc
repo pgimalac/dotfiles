@@ -1,10 +1,5 @@
 #!/bin/zsh
 
-# manual patch in the completion script to fix bat completion
-# put zfunc at the start of fpath to override the official completion file
-# might need to update the script if bat is updated...
-export fpath=($HOME/.zfunc $fpath)
-
 # Path to your oh-my-zsh installation.
 ZSH="$HOME/.oh-my-zsh"
 
@@ -54,6 +49,7 @@ if [ -z "$plugins" ]; then
         fancy-ctrl-z
         fzf # custom
         quick-command-change # custom
+        quick-directory-change # custom
         random # custom
         reload # custom
         safe-paste # custom
@@ -67,7 +63,6 @@ if [ -z "$plugins" ]; then
 fi
 
 source $ZSH/oh-my-zsh.sh
-
 # enables ** recursive patterns
 setopt extended_glob glob_star_short
 
@@ -154,3 +149,16 @@ lcd () { cd "$1" && ls ${@:2:$#} }
 # some more bindings
 bindkey "^B" history-incremental-search-backward
 bindkey "^F" history-incremental-search-forward
+
+# some zsh styles
+# cd completion doesn't show the current directory with ..
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+
+# don't show completion functions in completion
+zstyle ':completion:*:functions' ignored-patterns '_*'
+
+# when there is no match for a function show approximates with at most 2 errors
+zstyle ':completion:*' completer _complete _match _approximate
+zstyle ':completion:*:match:*' original only
+zstyle ':completion:*:approximate:*' max-errors 2 numeric
+

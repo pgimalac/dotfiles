@@ -5,31 +5,35 @@
 # copy the active line from the command line buffer
 # onto the system clipboard, and clear the line
 
-alias copy="xclip -i -selection clipboard"
-alias paste="xclip -o -selection clipboard; echo"
+# using a function instead of an alias avoids some issues
+# when this is used before being defined
+# because aliases are replaced immediately when used
+# while functions are resolved at runtime
+function copy {
+    xclip -i -selection clipboard $@
+}
 
-cutbuffer () {
-    if which clipcopy &>/dev/null; then
-        echo -n "$BUFFER" | clipcopy
-        BUFFER=""
-    else
-        echo "clipcopy function not found. Please make sure you have Oh My Zsh installed correctly."
-    fi
+function paste {
+    xclip -o -selection clipboard $@
+}
+
+function cutbuffer {
+    echo -n "$BUFFER" | copy
+    BUFFER=""
 }
 
 function copydir {
-    echo -n "$PWD" | clipcopy
+    echo -n "$PWD" | copy
 }
 
 function copyfile {
-    clipcopy "$1"
+    copy "$1"
 }
-
 
 zle -N cutbuffer
 
 # remove all ctrl+x bindkeys
 # otherwise zsh will wait (less than 1s but still) for a second key press
-bindkey -r "^X^B" "^X^E" "^X^F" "^X^J" "^X^K" "^X^N" "^X^O" "^X^R" "^X^U" "^X^V" "^X^X" "^X*" "^X=" "^X?" "^XC" "^XG" "^Xa" "^Xc" "^Xd" "^Xe" "^Xg" "^Xh" "^Xm" "^Xn" "^Xr" "^Xs" "^Xt" "^Xu" "^X~"
+bindkey -r $(bindkey | grep -e "^\"\^X" | sed -E 's/^\"([^ ]*)\" .*/\1/' | tr '\n' ' ')
 
 bindkey "^X" cutbuffer
