@@ -5,7 +5,6 @@ ZSH="$HOME/.oh-my-zsh"
 
 DOTFILES="$HOME/.dotfiles"
 CONFIG="$HOME/.config"
-NEXTCLOUD="$HOME/Nextcloud"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -43,19 +42,20 @@ COMPLETION_WAITING_DOTS="true"
 
 if [ -z "$plugins" ]; then
     readonly plugins=(
-        compleat
-        dirhistory # custom
-        extract
-        fancy-ctrl-z
+        # compleat
+        # dirhistory # custom
+        # extract
+        # fancy-ctrl-z
         fzf # custom
-        quick-command-change # custom
-        quick-directory-change # custom
+        # quick-command-change # custom
+        # quick-directory-change # custom
         random # custom
         reload # custom
         safe-paste # custom
+        pdetach
         zmv # custom
-        transfer # custom
-        universalarchive # custom
+        # transfer # custom
+        # universalarchive # custom
         zsh-autosuggestions # not really custom but I have a wrapper
         zsh-syntax-highlighting # kind of custom, wrapper
         copy # custom # has to be put at the end to remove ^X bindings
@@ -103,17 +103,14 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p --pager=\"$PAGER\"'"
 
 # my aliases
 # override existing applications
-alias du="dust"
 alias cat="bat -pp"
-alias find=fd
-alias grep="noglob rg"
+alias grep="noglob grep"
 alias sed="noglob sed"
 alias awk="noglob awk"
 alias ls="exa -h -g --classify --icons"
 alias tree="exa --tree -h --classify --icons"
 # alias paru="MAKEFLAGS=j8 paru" # added MAKEFLAGS directly in /etc/makepkg.conf
 alias ssh="TERM=xterm ssh"
-alias dd="ddi"
 alias zathura="detach zathura"
 alias vlc="detach vlc"
 alias libreoffice="detach libreoffice"
@@ -137,7 +134,6 @@ alias dotfiles="cd $DOTFILES"
 alias config="cd $CONFIG"
 alias sl=ls
 alias open="xdg-open"
-alias detach=pdetach
 
 # new functions
 alias music="vlc $HOME/Nextcloud/Musique/other/* --random"
@@ -161,4 +157,3 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
-
