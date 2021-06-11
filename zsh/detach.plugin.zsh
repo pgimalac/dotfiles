@@ -1,16 +1,16 @@
 #!/bin/false
 
-function pdetach {
+function detach {
     if [ -t 0 ]; then
-        exec <-
+        exec <& -
     fi
 
     if [ -t 1 ]; then
-        exec 1>-
+        exec 1>& -
     fi
 
     if [ -t 2 ]; then
-        exec 2>-
+        exec 2>& -
     fi
 
     (nohup $@ &)

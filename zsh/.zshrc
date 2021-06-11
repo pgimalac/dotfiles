@@ -52,7 +52,7 @@ if [ -z "$plugins" ]; then
         random # custom
         reload # custom
         safe-paste # custom
-        pdetach
+        detach
         zmv # custom
         # transfer # custom
         # universalarchive # custom
