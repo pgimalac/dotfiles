@@ -50,6 +50,7 @@ if [ -z "$plugins" ]; then
         fzf # custom
         quick-command-change # custom
         quick-directory-change # custom
+        detach # custom
         random # custom
         reload # custom
         safe-paste # custom
@@ -137,7 +138,6 @@ alias dotfiles="cd $DOTFILES"
 alias config="cd $CONFIG"
 alias sl=ls
 alias open="xdg-open"
-alias detach=pdetach
 
 # new functions
 alias music="vlc $HOME/Nextcloud/Musique/other/* --random"
