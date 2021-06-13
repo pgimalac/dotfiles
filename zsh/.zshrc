@@ -130,6 +130,7 @@ alias gc="git checkout"
 alias gpush="git push"
 alias gpull="git pull"
 alias gp="git pull && git push"
+gall() { git add . && gcam $1 && gp }
 alias gd="git diff"
 alias zshrc='subl ~/.zshrc'
 alias h=history
@@ -137,13 +138,22 @@ alias tmp="cd /tmp"
 alias dotfiles="cd $DOTFILES"
 alias config="cd $CONFIG"
 alias sl=ls
-alias open="xdg-open"
+alias open="detach xdg-open"
 
 # new functions
 alias music="vlc $HOME/Nextcloud/Musique/other/* --random"
 alias classic="vlc $HOME/Nextcloud/Musique/classic/* --random"
 alias cpg++="g++ -g -Wall -Wextra -DONLINE_JUDGE -O2 -std=c++17"
 
+spawn() {
+    if [ "$#@" -eq "0" ]; then
+        detach alacritty
+    else
+        for d in "$@"; do
+            detach alacritty --working-directory $d
+        done
+    fi
+}
 lcd () { cd "$1" && ls ${@:2:$#} }
 
 # some more bindings
