@@ -130,7 +130,7 @@ alias gc="git checkout"
 alias gpush="git push"
 alias gpull="git pull"
 alias gp="git pull && git push"
-gall() { git add . && gcam $1 && gp }
+gall() { git add . && git commit -am "$1" && git pull && git push }
 alias gd="git diff"
 alias zshrc='subl ~/.zshrc'
 alias h=history
@@ -171,4 +171,3 @@ zstyle ':completion:*:functions' ignored-patterns '_*'
 zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
-

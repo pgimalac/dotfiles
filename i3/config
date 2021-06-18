@@ -164,6 +164,7 @@ for_window [class="feh"] floating enable, border normal
 for_window [class="Yad" title="yad-calendar"] floating enable
 for_window [class="Gnome-screenshot"] floating enable, border normal
 for_window [class="kdeconnect-sms"] floating enable, border normal
+for_window [class="gnome-calculator"] floating enable, border normal
 
 # assigns focus
 assign [class="Min"] $tag3

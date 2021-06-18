@@ -4,4 +4,11 @@
 
 # damn that's nice
 autoload zmv
-alias zmv='noglob zmv -W'
+
+alias zcp='noglob zmv -C'
+alias zln='noglob zmv -L'
+alias zmv='noglob zmv -M'
+
+alias zcpw='zcp -W'
+alias zlnw='zln -W'
+alias zmvw='zmv -W'
