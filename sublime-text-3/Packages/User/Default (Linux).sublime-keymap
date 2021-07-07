@@ -205,5 +205,6 @@
 
     { "keys": ["ctrl+shift+m"], "command": "expand_selection", "args": {"to": "brackets"} },
     { "keys": ["alt+d"], "command": "dash_doc"},
+    { "keys": ["altgr+enter"], "command": "insert_newline"},
 ]
 

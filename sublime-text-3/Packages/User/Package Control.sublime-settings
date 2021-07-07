@@ -25,6 +25,7 @@
 		"Gofmt",
 		"GotoDocumentation",
 		"Increment Selection",
+		"INI",
 		"Java Velocity",
 		"JavaIME",
 		"Javatar",
@@ -55,7 +56,7 @@
 		"PyYapf Python Formatter",
 		"Random Everything",
 		"RandomCase",
-		"rsub",
+		"RemoteSubl",
 		"Rust Enhanced",
 		"RustAutoComplete",
 		"RustAutoImport",
@@ -78,6 +79,6 @@
 		"TOML",
 		"Vuejs Complete Package",
 		"WordCount",
-		"Wrap Plus"
+		"Wrap Plus",
 	],
 }

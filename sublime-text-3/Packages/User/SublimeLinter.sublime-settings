@@ -32,7 +32,6 @@
                 "${file_path}/include",
                 "${folder}/include",
                 "/usr/local/include",
-                "json/include",
             ],
             "excludes": [],
         },

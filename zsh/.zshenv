@@ -32,3 +32,6 @@ export ARCHFLAGS="-arch x86_64"
 
 # ocaml
 export OCAMLRUNPARAM="b1"
+
+# go
+export GOPATH="$HOME/.go"
