@@ -1,9 +1,12 @@
 // SublimeLinter Settings - User
 {
    "delay": 0.2,
+   "debug": false,
     "linters":
     {
         "clang": {
+            "disable": false,
+            "executable": ["clang"],
             "args": "-fvery-important"
         },
         "clang++": {

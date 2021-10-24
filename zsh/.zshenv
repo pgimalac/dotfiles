@@ -2,7 +2,7 @@
 
 PATH=
 source /etc/zsh/zprofile
-PATH=$PATH:/usr/bin:/bin:/opt/comelec/bin:$HOME/.cargo/bin:$HOME/.opam/default/bin
+PATH=$PATH:/usr/bin:/bin:/opt/comelec/bin:$HOME/.cargo/bin:$HOME/.opam/default/bin:$HOME/.local/bin:$HOME/go/bin
 
 # manual patch in the completion script to fix bat completion
 # put zfunc at the start of fpath to override the official completion file
@@ -28,10 +28,15 @@ export LC_MESSAGES="$LANG"
 export LC_TIME="$LANG"
 export TORBROWSER_PKGLANG="fr"
 
-export ARCHFLAGS="-arch x86_64"
+# cause bugs in some builds, not even sure it is correct
+# export ARCHFLAGS="-arch x86_64"
 
 # ocaml
 export OCAMLRUNPARAM="b1"
 
 # go
 export GOPATH="$HOME/.go"
+
+# Xilinx Vivado
+export LD_LIBRARY_PATH=/usr/lib:/lib:/opt/intel/mkl/lib/:/opt/Xilinx/Vivado/2017.2/lib/lnx64.o/:/opt/Xilinx/SDK/2017.2/lib/lnx64.o/:/opt/Xilinx/Vivado_HLS/2017.2/lnx64/tools/clang-3.9/lib
+export PATH=$PATH:/opt/Xilinx

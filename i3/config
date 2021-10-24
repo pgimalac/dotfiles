@@ -36,6 +36,20 @@ exec xautolock -time 5 -locker $HOME/.config/i3/lock.sh -corners ---+ -cornersiz
 bindsym $mod+l exec xautolock -locknow
 bindsym $mod+m exec xautolock -toggle
 
+# dunst
+# Close notification.
+bindsym ctrl+e exec dunstctl close
+
+# Close all notifications.
+bindsym ctrl+shift+e exec dunstctl close-all
+
+# Redisplay last message(s).
+bindsym ctrl+shift+y exec dunstctl history-pop
+
+# Context menu.
+bindsym ctrl+shift+r exec dunstctl context
+
+
 # set float from console
 for_window [title="^float_mode$"] floating enable
 
@@ -266,7 +280,7 @@ default_border none
 exec --no-startup-id nextcloud
 exec --no-startup-id numlockx on
 exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id dunst -config /home/pierre/.config/dunst/config
+exec --no-startup-id dunst -config /home/pierre/.config/dunst/dunstrc
 exec --no-startup-id /home/pierre/.config/i3/power_notification.sh
 
 # some shortcuts
